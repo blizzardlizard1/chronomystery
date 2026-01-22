@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 2077983476}
   speed: 7
-  turnSpeed: 360
+  turnSpeed: 720
 --- !u!136 &2077983478
 CapsuleCollider:
   m_ObjectHideFlags: 0
