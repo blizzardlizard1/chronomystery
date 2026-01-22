@@ -39,10 +39,15 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, turnSpeed * Time.deltaTime);
 
         }
-    }   
+    }
 
     void Move()
     {
-        _rb.MovePosition(transform.position + transform.forward * input.magnitude * speed * Time.deltaTime);
+        if (input == Vector3.zero) return;
+
+        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+        var skewedInput = matrix.MultiplyPoint3x4(input);
+
+        _rb.MovePosition(transform.position + skewedInput * speed * Time.deltaTime);
     }
 }
