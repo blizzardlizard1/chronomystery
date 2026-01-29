@@ -23,6 +23,7 @@ public class TimeSwitch : MonoBehaviour
         if (other.CompareTag("Player") && open)
         {
             MirrorManager.TargetPortalID = portalID;
+            Destroy(other.gameObject);
             SceneManager.LoadScene(destinationName);
         }
     }

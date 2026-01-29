@@ -31,6 +31,13 @@ public class PlayerSpawner : MonoBehaviour
 
     void SpawnPlayer(Transform spawnPoint)
     {
+        // Destroy any existing player first
+        GameObject existingPlayer = GameObject.FindGameObjectWithTag("Player");
+        if (existingPlayer != null)
+        {
+            Destroy(existingPlayer);
+        }
+
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         
         if (SmoothCameraFollow.Instance != null)
