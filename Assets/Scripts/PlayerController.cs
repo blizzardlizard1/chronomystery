@@ -43,11 +43,16 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        if (input == Vector3.zero) return;
+        if (input == Vector3.zero)
+        {
+            _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+            return;
+        }
 
         var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
         var skewedInput = matrix.MultiplyPoint3x4(input);
 
-        _rb.MovePosition(transform.position + skewedInput * speed * Time.deltaTime);
+        var desiredVelocity = skewedInput * speed;
+        _rb.velocity = new Vector3(desiredVelocity.x, _rb.velocity.y, desiredVelocity.z);
     }
 }
