@@ -1,48 +1,50 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
 
+    private ISceneTransition EnterTransition => MirrorManager.Instance?.Transition;
+
     void Start()
     {
         if (!string.IsNullOrEmpty(MirrorManager.TargetPortalID))
         {
-            // Find the portal we should spawn at
-            var portals = FindObjectsOfType<TimeSwitch>();
-
-            foreach (var portal in portals)
-            {
-                if (portal.PortalID == MirrorManager.TargetPortalID)
-                {
-                    SpawnPlayer(portal.SpawnPoint);
-                    return;
-                }
-            }
-
-            // Fallback: spawn at default location if no matching portal
-            Debug.LogWarning($"No portal found with ID: {MirrorManager.TargetPortalID}");
-            SpawnPlayer(transform);
+            StartCoroutine(SpawnRoutine());
         }
-
     }
 
-    void SpawnPlayer(Transform spawnPoint)
+    private IEnumerator SpawnRoutine()
     {
-        // Destroy any existing player first
-        GameObject existingPlayer = GameObject.FindGameObjectWithTag("Player");
-        if (existingPlayer != null)
+        // Find the matching portal
+        Transform spawnPoint = transform; // fallback
+        var portals = FindObjectsOfType<TimeSwitch>();
+
+        foreach (var portal in portals)
         {
-            Destroy(existingPlayer);
+            if (portal.PortalID == MirrorManager.TargetPortalID)
+            {
+                spawnPoint = portal.SpawnPoint;
+                break;
+            }
         }
 
+        // Spawn the player
+        GameObject existing = GameObject.FindGameObjectWithTag("Player");
+        if (existing != null)
+            Destroy(existing);
+
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
-        
+
         if (SmoothCameraFollow.Instance != null)
-        {
             SmoothCameraFollow.Instance.SetTarget(player.transform);
-        }
+
+        // --- Enter transition: fade in, end cutscene, etc. ---
+        if (EnterTransition != null)
+            yield return EnterTransition.OnEnterScene();
+
+        // Clear the target so normal scene loads aren't affected
+        MirrorManager.TargetPortalID = null;
     }
 }

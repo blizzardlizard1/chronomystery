@@ -33,6 +33,7 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
+        Debug.Log("attempting to interact");
         onInteract?.Invoke();
     }
 }
