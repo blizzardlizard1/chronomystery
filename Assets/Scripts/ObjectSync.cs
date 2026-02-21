@@ -3,6 +3,7 @@ using UnityEngine;
 public class ObjectSync : MonoBehaviour
 {
     [SerializeField] private string objectID;
+    [SerializeField] private string[] linkedObjectIDs;
 
     void Start()
     {
@@ -15,6 +16,10 @@ public class ObjectSync : MonoBehaviour
     public void DestroyPersistent()
     {
         SceneStateManager.Instance.MarkDestroyed(objectID);
+
+        foreach (var id in linkedObjectIDs)
+            SceneStateManager.Instance.MarkDestroyed(id);
+            
         Destroy(gameObject);
     }
 }

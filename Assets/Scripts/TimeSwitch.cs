@@ -16,6 +16,7 @@ public class TimeSwitch : MonoBehaviour
 
     public string PortalID => portalID;
     public Transform SpawnPoint => spawnPoint;
+    public bool IsOpen => open;
 
     private ISceneTransition Transition => MirrorManager.Instance?.Transition;
 

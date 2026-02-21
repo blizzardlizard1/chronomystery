@@ -7,8 +7,8 @@ public class InventorySlot : MonoBehaviour
 {
     public TextMeshProUGUI slotText;
 
-    public void SetSlot(bool hasItem)
+    public void SetSlot(string name)
     {
-        slotText.text = hasItem ? "Item" : "";
+        slotText.text = name ?? "";
     }
 }

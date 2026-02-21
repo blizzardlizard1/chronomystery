@@ -1,31 +1,26 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class PlayerInventory : MonoBehaviour
 {
-    public int inventorySize = 5; // fixed 5 slots
-
+    public int inventorySize = 5;
     public UnityEvent onInventoryChanged;
-
-    public List<bool> slots = new List<bool>(); 
-    // true = item present, false = empty
+    public List<string> slots = new List<string>();
 
     private void Awake()
     {
         for (int i = 0; i < inventorySize; i++)
-            slots.Add(false);
+            slots.Add(null);
     }
 
-    public bool AddItem()
+    public bool AddItem(string itemName)
     {
         for (int i = 0; i < slots.Count; i++)
         {
-            if (!slots[i])
+            if (slots[i] == null)
             {
-                slots[i] = true;
+                slots[i] = itemName;
                 onInventoryChanged?.Invoke();
                 return true;
             }
@@ -37,10 +32,15 @@ public class PlayerInventory : MonoBehaviour
 
     public void RemoveItem(int slotIndex)
     {
-        if (slots[slotIndex])
+        if (slots[slotIndex] != null)
         {
-            slots[slotIndex] = false;
+            slots[slotIndex] = null;
             onInventoryChanged?.Invoke();
         }
+    }
+
+    public bool HasItem(string itemName)
+    {
+        return slots.Contains(itemName);
     }
 }

@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 1912748316110517409}
   m_Layer: 0
   m_Name: Mirror
-  m_TagString: Untagged
+  m_TagString: Mirror
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -889,7 +889,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -949,6 +949,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: Press SPACE to interact
+  supportedActions: []
+  onTopAction:
+    m_PersistentCalls:
+      m_Calls: []
+  onRightAction:
+    m_PersistentCalls:
+      m_Calls: []
+  onBottomAction:
+    m_PersistentCalls:
+      m_Calls: []
+  onLeftAction:
+    m_PersistentCalls:
+      m_Calls: []
   onInteract:
     m_PersistentCalls:
       m_Calls:

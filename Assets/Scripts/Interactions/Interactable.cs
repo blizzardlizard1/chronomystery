@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
 
     [Header("Wheel Actions")]
     [Tooltip("Which wheel actions this object supports.")]
-    public List<WheelAction> supportedActions = new();
+    public List<ActionEntry> supportedActions = new();
 
     [Header("Action Events — assign per object in Inspector")]
     public UnityEvent onTopAction;
@@ -29,6 +29,18 @@ public class Interactable : MonoBehaviour
 
     public void SetPlayerInRange(bool value)
     {
+        // Ignore closed mirrors
+        if (value && CompareTag("Mirror"))
+        {
+            var mirror = GetComponent<TimeSwitch>();
+            if (mirror != null && !mirror.IsOpen)
+            {
+                playerInRange = false;
+                InteractionUI.Instance.Hide();
+                return;
+            }
+        }
+
         playerInRange = value;
 
         if (value)

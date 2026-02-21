@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
+using System.Linq;
 
 public class InteractionWheel : MonoBehaviour
 {
@@ -44,13 +44,23 @@ public class InteractionWheel : MonoBehaviour
         selected = -1;
         wheelPanel.SetActive(true);
 
-        // Enable/disable segments based on object's supported actions
+        var inv = PlayerController.Instance.GetComponent<PlayerInventory>();
+
         for (int i = 0; i < 4; i++)
         {
-            segmentAvailable[i] = obj.supportedActions.Contains((WheelAction)i);
-            segments[i].color = segmentAvailable[i] ? originalColors[i] : disabled;
+            var entry = obj.supportedActions.FirstOrDefault(e => e.action == (WheelAction)i);
+            bool exists = obj.supportedActions.Any(e => e.action == (WheelAction)i);
+            bool hasItem = string.IsNullOrEmpty(entry.requiredItem) || inv.HasItem(entry.requiredItem);
+            bool available = exists && hasItem;
+
+            segmentAvailable[i] = available;
+            segments[i].color = available ? originalColors[i] : disabled;
+
             if (labels != null && i < labels.Length)
-                labels[i].color = segmentAvailable[i] ? Color.white : new Color(1, 1, 1, 0.3f);
+            {
+                labels[i].text = exists ? entry.name : "";
+                labels[i].color = available ? Color.white : new Color(1, 1, 1, 0.3f);
+            }
         }
 
         PlayerController.Instance.SetMovementLocked(true);
@@ -100,8 +110,12 @@ public class InteractionWheel : MonoBehaviour
         // Confirm
         if (selected >= 0 && Input.GetKeyDown(KeyCode.Space))
         {
-            var action = (WheelAction)selected;
-            target.ExecuteWheelAction(action);
+            var entry = target.supportedActions.FirstOrDefault(e => e.action == (WheelAction)selected);
+
+            if (!string.IsNullOrEmpty(entry.dialogue))
+                DialogueDisplay.Instance.Show(entry.dialogue);
+
+            target.ExecuteWheelAction(entry.action);
             Close();
         }
     }
