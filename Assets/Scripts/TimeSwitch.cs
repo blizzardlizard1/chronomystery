@@ -36,12 +36,8 @@ public class TimeSwitch : MonoBehaviour
         if (Transition != null)
             yield return Transition.OnExitScene();
 
-        // --- Phase 2: Set up destination and destroy current player ---
+        // --- Phase 2: Set up destination  ---
         MirrorManager.TargetPortalID = portalID;
-
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-            Destroy(player);
 
         // --- Phase 3: Load scene asynchronously ---
         AsyncOperation loadOp = SceneManager.LoadSceneAsync(destinationName);

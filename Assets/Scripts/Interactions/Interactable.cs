@@ -12,10 +12,10 @@ public class Interactable : MonoBehaviour
     public List<WheelAction> supportedActions = new();
 
     [Header("Action Events — assign per object in Inspector")]
-    public UnityEvent onMoveAction;
-    public UnityEvent onBreakAction;
-    public UnityEvent onPlaceAction;
-    public UnityEvent onChangeAction;
+    public UnityEvent onTopAction;
+    public UnityEvent onRightAction;
+    public UnityEvent onBottomAction;
+    public UnityEvent onLeftAction;
 
     // Legacy single-interact event (kept for non-wheel interactables)
     [Header("Legacy (non-wheel interaction)")]
@@ -47,8 +47,7 @@ public class Interactable : MonoBehaviour
             InteractionWheel.Instance.Open(this);
         }
         else
-        {
-            Debug.Log("Legacy interact");
+        {            
             onInteract?.Invoke();
         }
     }
@@ -58,12 +57,11 @@ public class Interactable : MonoBehaviour
     {
         switch (action)
         {
-            case WheelAction.Move: onMoveAction?.Invoke(); break;
-            case WheelAction.Break: onBreakAction?.Invoke(); break;
-            case WheelAction.Place: onPlaceAction?.Invoke(); break;
-            case WheelAction.Change: onChangeAction?.Invoke(); break;
+            case WheelAction.Top: onTopAction?.Invoke(); break;
+            case WheelAction.Right: onRightAction?.Invoke(); break;
+            case WheelAction.Bottom: onBottomAction?.Invoke(); break;
+            case WheelAction.Left: onLeftAction?.Invoke(); break;
         }
 
-        Debug.Log($"[Interactable] {action} on {gameObject.name}");
     }
 }

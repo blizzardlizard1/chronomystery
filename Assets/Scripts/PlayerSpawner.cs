@@ -9,16 +9,29 @@ public class PlayerSpawner : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(InitPlayer());
+    }
+
+    private IEnumerator InitPlayer()
+    {
+        yield return null;
+
+
+        if (PlayerController.Instance == null)
+        {
+            GameObject player = Instantiate(playerPrefab, transform.position, transform.rotation);
+            player.name = "Player";
+        }
+
         if (!string.IsNullOrEmpty(MirrorManager.TargetPortalID))
         {
-            StartCoroutine(SpawnRoutine());
+            yield return SpawnRoutine();
         }
     }
 
     private IEnumerator SpawnRoutine()
     {
-        // Find the matching portal
-        Transform spawnPoint = transform; // fallback
+        Transform spawnPoint = transform;
         var portals = FindObjectsOfType<TimeSwitch>();
 
         foreach (var portal in portals)
@@ -30,21 +43,15 @@ public class PlayerSpawner : MonoBehaviour
             }
         }
 
-        // Spawn the player
-        GameObject existing = GameObject.FindGameObjectWithTag("Player");
-        if (existing != null)
-            Destroy(existing);
-
-        GameObject player = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject player = PlayerController.Instance.gameObject;
+        player.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
 
         if (SmoothCameraFollow.Instance != null)
             SmoothCameraFollow.Instance.SetTarget(player.transform);
 
-        // --- Enter transition: fade in, end cutscene, etc. ---
         if (EnterTransition != null)
             yield return EnterTransition.OnEnterScene();
 
-        // Clear the target so normal scene loads aren't affected
         MirrorManager.TargetPortalID = null;
     }
 }

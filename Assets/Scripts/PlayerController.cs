@@ -13,9 +13,15 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
-    }
 
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     void Update()
     {
         if (movementLocked)

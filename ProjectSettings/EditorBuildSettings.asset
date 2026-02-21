@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Present - Manor.unity
+    guid: 2a0522e3c5fd9c44ab80959505ea9a70
+  - enabled: 1
+    path: Assets/Scenes/Past - Manor.unity
+    guid: 6af009689987aa64db224fe4214e283c
+  - enabled: 1
     path: Assets/Scenes/TestScenes/TimeTest.unity
     guid: 8bfd4e88b0416c543bf33f57439317a0
   - enabled: 1

@@ -110,11 +110,11 @@ public class InteractionWheel : MonoBehaviour
     /// Adjust these ranges to match your wheel's visual layout.
     private int AngleToIndex(float angle)
     {
-        //          Break
-        //           |
-        //  Place ---+--- Move
-        //           |
-        //         Change
+        //       0
+        //       |
+        //  3 ---+--- 1
+        //       |
+        //       2
 
         if (angle >= 45f  && angle < 135f)  return 0; // Top
         if (angle >= 315f || angle < 45f)   return 1; // Right

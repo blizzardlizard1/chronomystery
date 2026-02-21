@@ -13,7 +13,7 @@ public class Pickup : MonoBehaviour
 
         if (inv.AddItem())
         {
-            Destroy(gameObject);
+            GetComponent<ObjectSync>().DestroyPersistent();
         }
         else
         {
