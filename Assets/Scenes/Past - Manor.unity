@@ -2317,8 +2317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Tools
-  examineText: "Some rusted carpentry tools\u2026 Looks like someone forgot to do
-    maintenance."
 --- !u!114 &758235780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2344,19 +2342,7 @@ MonoBehaviour:
     dialogue: I'm sure this will come in handy.
   onTopAction:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 758235779}
-        m_TargetAssemblyTypeName: InteractableUtils, Assembly-CSharp
-        m_MethodName: Examine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onRightAction:
     m_PersistentCalls:
       m_Calls:
@@ -3243,7 +3229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Puddle
-  examineText: 
 --- !u!114 &1317675920
 MonoBehaviour:
   m_ObjectHideFlags: 0
