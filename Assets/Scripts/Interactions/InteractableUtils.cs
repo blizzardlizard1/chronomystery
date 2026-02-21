@@ -9,8 +9,6 @@ public class InteractableUtils : MonoBehaviour
 {
     public string itemName;
 
-    [SerializeField] private string examineText;
-
     public void PickupItem()
     {
         PlayerInventory inv = FindObjectOfType<PlayerInventory>();
