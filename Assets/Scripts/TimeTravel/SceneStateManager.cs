@@ -27,4 +27,14 @@ public class SceneStateManager : MonoBehaviour
     {
         return _destroyedObjects.Contains(objectID);
     }
+
+    public HashSet<string> GetDestroyedSet()
+    {
+        return new HashSet<string>(_destroyedObjects);
+    }
+
+    public void SetDestroyedSet(HashSet<string> set)
+    {
+        _destroyedObjects = new HashSet<string>(set);
+    }
 }
