@@ -16,7 +16,6 @@ public class PlayerSpawner : MonoBehaviour
     {
         yield return null;
 
-
         if (PlayerController.Instance == null)
         {
             GameObject player = Instantiate(playerPrefab, transform.position, transform.rotation);
@@ -26,6 +25,10 @@ public class PlayerSpawner : MonoBehaviour
         if (!string.IsNullOrEmpty(MirrorManager.TargetPortalID))
         {
             yield return SpawnRoutine();
+        }
+        else
+        {
+            CheckpointSystem.Instance.SaveCheckpoint();
         }
     }
 
