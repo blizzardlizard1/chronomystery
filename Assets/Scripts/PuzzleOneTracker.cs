@@ -9,14 +9,16 @@ public class PuzzleOneTracker : MonoBehaviour
     public bool puzzleComplete = false;
     public int puzzleScore = 0;
 
-    [Header("References")]
-    public PlayerInventory playerInventory;
-    public GameObject puddleObject;     // drag the puddle object here
+    [Header("Settings")]
     public string toolsItemName = "Tools";
-
-    [Header("Scene Names")]
     public string pastSceneName = "Past";
     public string presentSceneName = "Present";
+
+    // since its not in the starting scene, we need to find in runtime
+    public string puddleObjectName = "Puddle";
+
+    private PlayerInventory playerInventory;
+    private GameObject puddleObject;
 
     private bool wentToPast = false;
     private bool pickedUpTools = false;
@@ -28,16 +30,52 @@ public class PuzzleOneTracker : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject); 
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Update()
     {
         if (puzzleComplete) return;
 
+        TryFindPlayerInventory();
         CheckSceneProgress();
         CheckInventoryProgress();
         CheckPuddleProgress();
+    }
+
+    // Find player inventory after player spawns in runtime
+    private void TryFindPlayerInventory()
+    {
+        if (playerInventory != null) return;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerInventory = player.GetComponent<PlayerInventory>();
+            if (playerInventory != null)
+                Debug.Log("PlayerInventory found");
+        }
+    }
+
+    // When a scene loads, try to find the puddle if we're in the Past
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == pastSceneName)
+        {
+            puddleObject = GameObject.Find(puddleObjectName);
+            if (puddleObject != null)
+                Debug.Log("Puddle found");
+        }
     }
 
     private void CheckSceneProgress()
@@ -59,6 +97,8 @@ public class PuzzleOneTracker : MonoBehaviour
 
     private void CheckInventoryProgress()
     {
+        if (playerInventory == null) return;
+
         if (!pickedUpTools && playerInventory.HasItem(toolsItemName))
         {
             pickedUpTools = true;
@@ -68,7 +108,7 @@ public class PuzzleOneTracker : MonoBehaviour
 
     private void CheckPuddleProgress()
     {
-        if (!fixedPuddle && puddleObject == null)
+        if (!fixedPuddle && puddleObject == null && wentToPast)
         {
             fixedPuddle = true;
             AddProgress("Fixed Puddle");
@@ -78,7 +118,7 @@ public class PuzzleOneTracker : MonoBehaviour
     private void AddProgress(string stepName)
     {
         puzzleScore += stepValue;
-        Debug.Log($"Puzzle 1 Step completed: {stepName}. Score = {puzzleScore}");
+        Debug.Log($"Step completed: {stepName}. Score = {puzzleScore}");
 
         if (puzzleScore >= completionScore)
         {
