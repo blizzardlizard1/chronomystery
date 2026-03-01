@@ -6011,7 +6011,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1978367753}
-  - component: {fileID: 1978367752}
+  - component: {fileID: 1978367754}
   m_Layer: 0
   m_Name: Puzzle Tracker
   m_TagString: Untagged
@@ -6019,24 +6019,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1978367752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978367751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52e46d0304a5cc74dbcc7ee4a53ea83d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleComplete: 0
-  puzzleScore: 0
-  toolsItemName: Tools
-  pastSceneName: Past - Manor
-  presentSceneName: Present - Manor
-  puddleObjectName: Puddle
 --- !u!4 &1978367753
 Transform:
   m_ObjectHideFlags: 0
@@ -6052,6 +6034,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1978367754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978367751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad7372a697eb8846b60c4856c8b53f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steps:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: c1513a507b285154db7339ad2cc2bf20, type: 2}
+  - {fileID: 11400000, guid: a8f1218771d14c94ea0a7a180ccc15d4, type: 2}
+  currentStepIndex: 0
+  puzzleComplete: 0
 --- !u!43 &2116520337
 Mesh:
   m_ObjectHideFlags: 0
