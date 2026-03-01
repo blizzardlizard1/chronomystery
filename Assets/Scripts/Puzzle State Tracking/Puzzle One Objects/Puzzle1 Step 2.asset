@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4262b3ea76489049bada73897281dee, type: 3}
   m_Name: Puzzle1 Step 2
   m_EditorClassIdentifier: 
-  stepName: 
-  itemName: 
+  stepName: Gets tools
+  itemName: Tools

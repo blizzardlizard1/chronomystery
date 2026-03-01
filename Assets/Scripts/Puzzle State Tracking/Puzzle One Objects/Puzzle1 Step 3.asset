@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b496f78cc54c02941933604679cd1dc5, type: 3}
   m_Name: Puzzle1 Step 3
   m_EditorClassIdentifier: 
-  stepName: Destroy Puddle
+  stepName: Fix the leak
   objectName: Puddle

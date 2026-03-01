@@ -6047,9 +6047,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steps:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 010416d365903ea4fb6d3576f2d1ec35, type: 2}
   - {fileID: 11400000, guid: c1513a507b285154db7339ad2cc2bf20, type: 2}
   - {fileID: 11400000, guid: a8f1218771d14c94ea0a7a180ccc15d4, type: 2}
+  - {fileID: 11400000, guid: 4d88dd2d8f7b94a4da004d6c14673e70, type: 2}
   currentStepIndex: 0
   puzzleComplete: 0
 --- !u!43 &2116520337
