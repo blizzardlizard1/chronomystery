@@ -1,7 +1,5 @@
 using UnityEngine;
 
-using UnityEngine;
-
 public class Trap : MonoBehaviour
 {
     [SerializeField] private float destroyDelay = 5f;
