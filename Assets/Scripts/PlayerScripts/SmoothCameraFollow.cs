@@ -39,6 +39,16 @@ public class SmoothCameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
+        // Find the player if we don't have one yet
+        if (target == null)
+        {
+            GameObject playerObj = GameObject.FindWithTag("Player");
+            if (playerObj != null)
+                target = playerObj.transform;
+            else
+                return; // Player hasn't spawned yet, skip this frame
+        }
+
         if (target == null) return;
 
         Vector3 targetPosition = target.position + offset;
