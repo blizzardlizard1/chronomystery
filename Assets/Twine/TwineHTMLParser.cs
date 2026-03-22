@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Net;   // For HtmlDecode
 
 public static class TwineHTMLParser
 {
@@ -8,7 +9,6 @@ public static class TwineHTMLParser
     {
         var passages = new Dictionary<string, TwinePassage>();
 
-        // Match Twine passages (both formats)
         var passageRegex = new Regex(
             "<tw-passagedata[^>]*name=\"([^\"]+)\"[^>]*>([\\s\\S]*?)</tw-passagedata>|" +
             "<div[^>]*tiddler=\"([^\"]+)\"[^>]*>([\\s\\S]*?)</div>"
@@ -16,32 +16,71 @@ public static class TwineHTMLParser
 
         foreach (Match m in passageRegex.Matches(html))
         {
-            // Sugarcube style
             string title = m.Groups[1].Success ? m.Groups[1].Value : m.Groups[3].Value;
             string rawText = m.Groups[2].Success ? m.Groups[2].Value : m.Groups[4].Value;
 
-            var p = new TwinePassage();
-            p.title = title;
-            p.text = StripTags(rawText);
+            var passage = new TwinePassage();
+            passage.title = title;
 
-            // Find choices [[label->passage]]
+            // Clean passage dialogue text
+            passage.text = CleanText(rawText);
+
+            // Extract choices
             var linkRegex = new Regex("\\[\\[([^\\]]+?)(?:->([^\\]]+))?\\]\\]");
             foreach (Match link in linkRegex.Matches(rawText))
             {
-                string label = link.Groups[1].Value;
-                string target = link.Groups[2].Success ? link.Groups[2].Value : label;
+                string rawLabel  = link.Groups[1].Value;
+                string rawTarget = link.Groups[2].Success ? link.Groups[2].Value : rawLabel;
 
-                p.choices.Add(new TwineChoice { label = label, targetPassage = target });
+                string cleanLabel = CleanChoice(rawLabel);
+
+                passage.choices.Add(new TwineChoice
+                {
+                    label = cleanLabel,   // ❤️ Cleaned!
+                    targetPassage = rawTarget
+                });
             }
 
-            passages[title] = p;
+            passages[title] = passage;
         }
 
         return passages;
     }
 
-    private static string StripTags(string input)
+    /// <summary>
+    /// Cleans Twine passage display text.
+    /// - HTML decode
+    /// - Remove [[links]]
+    /// - Remove HTML tags
+    /// - Trim whitespace
+    /// </summary>
+    private static string CleanText(string input)
     {
-        return Regex.Replace(input, "<.*?>", "").Trim();
+        if (string.IsNullOrEmpty(input))
+            return "";
+
+        string decoded = WebUtility.HtmlDecode(input);
+        decoded = Regex.Replace(decoded, "\\[\\[(.*?)\\]\\]", "");
+        decoded = Regex.Replace(decoded, "<.*?>", "");
+
+        return decoded.Trim();
+    }
+
+    /// <summary>
+    /// Cleans Twine choice label text.
+    /// - HTML decode
+    /// - Remove HTML tags
+    /// - Trim whitespace
+    /// (Do NOT remove [[...]] since the label is already extracted)
+    /// </summary>
+    private static string CleanChoice(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return "";
+
+        string decoded = WebUtility.HtmlDecode(input);
+        decoded = Regex.Replace(decoded, "<.*?>", "");
+
+        return decoded.Trim();
     }
 }
