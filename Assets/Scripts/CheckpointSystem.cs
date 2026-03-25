@@ -29,7 +29,7 @@ public class CheckpointSystem : MonoBehaviour
             sceneName = SceneManager.GetActiveScene().name,
             playerPosition = PlayerController.Instance.transform.position,
             playerRotation = PlayerController.Instance.transform.rotation,
-            inventorySlots = new List<string>(inv.slots),
+            inventorySlots = new List<ItemData>(inv.slots),
             destroyedObjects = SceneStateManager.Instance.GetDestroyedSet()
         };
 
@@ -50,7 +50,7 @@ public class CheckpointSystem : MonoBehaviour
 
         // Restore inventory
         var inv = PlayerController.Instance.GetComponent<PlayerInventory>();
-        inv.slots = new List<string>(_savedCheckpoint.inventorySlots);
+        inv.slots = new List<ItemData>(_savedCheckpoint.inventorySlots);
         inv.onInventoryChanged?.Invoke();
 
         // Reload the checkpoint scene
@@ -97,7 +97,7 @@ public class CheckpointSystem : MonoBehaviour
         public string sceneName;
         public Vector3 playerPosition;
         public Quaternion playerRotation;
-        public List<string> inventorySlots;
+        public List<ItemData> inventorySlots;
         public HashSet<string> destroyedObjects;
     }
 }

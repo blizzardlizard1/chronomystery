@@ -50,9 +50,8 @@ public class InteractionWheel : MonoBehaviour
         {
             var entry = obj.supportedActions.FirstOrDefault(e => e.action == (WheelAction)i);
             bool exists = obj.supportedActions.Any(e => e.action == (WheelAction)i);
-            bool hasItem = string.IsNullOrEmpty(entry.requiredItem) || inv.HasItem(entry.requiredItem);
+            bool hasItem = !entry.requiredItem || inv.HasItem(entry.requiredItem);
             bool available = exists && hasItem;
-
             segmentAvailable[i] = available;
             segments[i].color = available ? originalColors[i] : disabled;
 
@@ -116,6 +115,10 @@ public class InteractionWheel : MonoBehaviour
                 DialogueDisplay.Instance.Show(entry.dialogue);
 
             target.ExecuteWheelAction(entry.action);
+            var inv = PlayerController.Instance.GetComponent<PlayerInventory>();
+            if (entry.requiredItem && entry.destroyRequired) {
+                inv.RemoveItem(entry.requiredItem);
+            }
             Close();
         }
     }

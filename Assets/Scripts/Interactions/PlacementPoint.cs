@@ -1,0 +1,158 @@
+using System;
+using UnityEngine;
+
+[RequireComponent(typeof(Interactable))]
+public class PlacementPoint : MonoBehaviour
+{
+    [Serializable]
+    public class PlacementRule
+    {
+        public ItemData item;
+        public string[] idsToDestroy;
+        public string[] idsToReveal;
+    }
+
+    [SerializeField] private string pointID;
+    [SerializeField] private ItemData preplacedItem;
+    [SerializeField] private PlacementRule[] rules;
+    [SerializeField] private LayerMask groundLayer;
+
+    private Interactable _interactable;
+    private ItemData _placedItem = null;
+    private PlacementRule _activeRule = null;
+    private GameObject _spawnedObject = null;
+    private bool _isPreplaced = false;
+
+    void Awake()
+    {
+        _interactable = GetComponent<Interactable>();
+    }
+
+    void Start()
+    {
+        var mgr = SceneStateManager.Instance;
+        ItemData savedItem = mgr.GetPlacedItem(pointID);
+
+        if (savedItem != null)
+        {
+            _placedItem = savedItem;
+            _activeRule = Array.Find(rules, r => r.item != null && r.item == savedItem);
+            SpawnObject(_placedItem);
+        }
+        else if (preplacedItem != null && !mgr.IsPickedUp(pointID))
+        {
+            _placedItem = preplacedItem;
+            _activeRule = Array.Find(rules, r => r.item != null && r.item == preplacedItem);
+            _isPreplaced = true;
+            SpawnObject(_placedItem);
+            ApplyRule(_activeRule);
+        }
+
+        RefreshWheel();
+    }
+
+    private void RefreshWheel()
+    {
+        _interactable.supportedActions.Clear();
+        _interactable.onTopAction.RemoveAllListeners();
+        _interactable.onBottomAction.RemoveAllListeners();
+
+        if (_placedItem != null)
+        {
+            _interactable.supportedActions.Add(new ActionEntry { action = WheelAction.Top, name = "Pick Up" });
+            _interactable.supportedActions.Add(new ActionEntry { action = WheelAction.Bottom, name = "Place" });
+            _interactable.onTopAction.AddListener(PickUp);
+            _interactable.onBottomAction.AddListener(() => InventoryController.Instance.BeginPlacement(this));
+        }
+        else
+        {
+            _interactable.supportedActions.Add(new ActionEntry { action = WheelAction.Bottom, name = "Place" });
+            _interactable.onBottomAction.AddListener(() => InventoryController.Instance.BeginPlacement(this));
+        }
+    }
+
+    public void OnItemPlaced(ItemData item)
+    {
+        if (_placedItem != null)
+        {
+            PlayerController.Instance.GetComponent<PlayerInventory>().AddItem(_placedItem);
+            DestroyObject();
+            ReverseRule(_activeRule);
+            SceneStateManager.Instance.ClearPlacedItem(pointID);
+            _placedItem = null;
+            _activeRule = null;
+        }
+
+        _placedItem = item;
+        _activeRule = Array.Find(rules, r => r.item == item);
+        _isPreplaced = false;
+        SceneStateManager.Instance.SetPlacedItem(pointID, item);
+        PlayerController.Instance.GetComponent<PlayerInventory>().RemoveItem(item);
+        SpawnObject(item);
+        ApplyRule(_activeRule);
+        RefreshWheel();
+    }
+
+    private void PickUp()
+    {
+        if (_placedItem == null) return;
+
+        PlayerController.Instance.GetComponent<PlayerInventory>().AddItem(_placedItem);
+        DestroyObject();
+        ReverseRule(_activeRule);
+
+        var mgr = SceneStateManager.Instance;
+        if (_isPreplaced) mgr.MarkPickedUp(pointID);
+        else mgr.ClearPlacedItem(pointID);
+
+        _placedItem = null;
+        _activeRule = null;
+        RefreshWheel();
+    }
+
+    private void ApplyRule(PlacementRule rule)
+    {
+        if (rule == null) return;
+        var mgr = SceneStateManager.Instance;
+        foreach (var id in rule.idsToDestroy)
+        {
+            mgr.MarkDestroyed(id);
+            var obj = mgr.Find(id);
+            if (obj != null) Destroy(obj.gameObject);
+        }
+        foreach (var id in rule.idsToReveal)
+        {
+            mgr.MarkSpawned(id);
+            var obj = mgr.Find(id);
+            if (obj != null) obj.RevealPersistent();
+        }
+    }
+
+    private void ReverseRule(PlacementRule rule)
+    {
+        if (rule == null) return;
+        var mgr = SceneStateManager.Instance;
+        foreach (var id in rule.idsToDestroy) mgr.UnmarkDestroyed(id);
+        foreach (var id in rule.idsToReveal) mgr.UnmarkSpawned(id);
+    }
+
+    private void SpawnObject(ItemData item)
+    {
+        if (item?.worldPrefab != null)
+            _spawnedObject = Instantiate(item.worldPrefab, GetSurfacePosition(item), transform.rotation);
+    }
+
+    private void DestroyObject()
+    {
+        if (_spawnedObject != null) { Destroy(_spawnedObject); _spawnedObject = null; }
+    }
+
+    private Vector3 GetSurfacePosition(ItemData item)
+    {
+        Vector3 origin = transform.position + Vector3.up * 10f;
+        float surfaceY = transform.position.y;
+        if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, 20f, groundLayer))
+            surfaceY = hit.point.y;
+        return new Vector3(transform.position.x, surfaceY + item.placementOffset, transform.position.z);
+    }
+}

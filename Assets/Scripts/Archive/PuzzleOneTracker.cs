@@ -99,7 +99,7 @@ public class PuzzleOneTracker : MonoBehaviour
     {
         if (playerInventory == null) return;
 
-        if (!pickedUpTools && playerInventory.HasItem(toolsItemName))
+        if (!pickedUpTools && playerInventory.HasItemName(toolsItemName))
         {
             pickedUpTools = true;
             AddProgress("Picked Up Tools");

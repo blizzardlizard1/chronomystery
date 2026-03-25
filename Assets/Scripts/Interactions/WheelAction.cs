@@ -15,8 +15,9 @@ public struct ActionEntry
     public string name;
     
     [Tooltip("Leave empty if no item is needed")]
-    public string requiredItem;
+    public ItemData requiredItem;
 
     [Tooltip("Dialogue that displays when performing this action.")]
     public string dialogue;
+    public bool destroyRequired;
 }

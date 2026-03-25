@@ -54,4 +54,14 @@ public class SmoothCameraFollow : MonoBehaviour
         Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);
     }
+
+    public void SnapToTarget(Transform player)
+    {
+        if (player)
+        {
+            target = player;
+            transform.position = target.position + offset;
+            currentVelocity = Vector3.zero; 
+        }
+    }
 }

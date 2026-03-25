@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get; private set; }
 
     [SerializeField] private Rigidbody _rb;
+    [SerializeField] private Animator _animator;
     [SerializeField] private float speed = 5;
     [SerializeField] private float turnSpeed = 360;
 
@@ -13,7 +14,6 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -22,16 +22,19 @@ public class PlayerController : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
     void Update()
     {
         if (movementLocked)
         {
             input = Vector3.zero;
+            _animator.SetBool("isWalking", false); 
             return;
         }
 
         GatherInput();
         Look();
+        UpdateAnimation(); 
     }
 
     void FixedUpdate()
@@ -70,10 +73,14 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = new Vector3(desiredVelocity.x, _rb.velocity.y, desiredVelocity.z);
     }
 
+    void UpdateAnimation()
+    {
+        _animator.SetBool("isWalking", input != Vector3.zero);
+    }
+
     public void SetMovementLocked(bool locked)
     {
         movementLocked = locked;
-        // Kill velocity immediately when locking
         if (locked) _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
     }
 }
