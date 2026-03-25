@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Puzzle/Steps/Inventory Has Item")]
 public class InventoryStep : PuzzleStep
 {
-    public string itemName;
+    public ItemData itemName;
 
     public override bool IsComplete(PuzzleTracker tracker)
     {

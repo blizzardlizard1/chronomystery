@@ -39,9 +39,29 @@ public class SmoothCameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
+        // Find the player if we don't have one yet
+        if (target == null)
+        {
+            GameObject playerObj = GameObject.FindWithTag("Player");
+            if (playerObj != null)
+                target = playerObj.transform;
+            else
+                return; // Player hasn't spawned yet, skip this frame
+        }
+
         if (target == null) return;
 
         Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);
+    }
+
+    public void SnapToTarget(Transform player)
+    {
+        if (player)
+        {
+            target = player;
+            transform.position = target.position + offset;
+            currentVelocity = Vector3.zero; 
+        }
     }
 }

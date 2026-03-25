@@ -130,8 +130,8 @@ RectTransform:
   m_GameObject: {fileID: 7402734664066628344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.03, y: 1.03, z: 1.03}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7402734663515949757}
   m_RootOrder: 0
@@ -224,7 +224,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7402734664066628344}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -238,6 +238,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7402734665242452915}
   - component: {fileID: 7402734665242452912}
+  - component: {fileID: 1058854098}
+  - component: {fileID: 1058854099}
+  - component: {fileID: 148992348}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -273,3 +276,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbdcbef2cf7e1c4f9b502451c47781a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeTransition: {fileID: 7402734664066628342}
+--- !u!114 &1058854098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7402734665242452913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e14141d0e35de4397e866db2cc0c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1058854099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7402734665242452913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25f178f2a9c9fa4ea123f00c69794bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &148992348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7402734665242452913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5fba859e5607546a7fe9ac1b38f1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navigateLeftKey: w
+  navigateRightKey: s
+  confirmKey: f
+  cancelKey: e

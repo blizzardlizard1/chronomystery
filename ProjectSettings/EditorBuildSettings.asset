@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Present - Manor.unity
+    path: Assets/Scenes/Pink Section/Present - Manor.unity
     guid: 2a0522e3c5fd9c44ab80959505ea9a70
   - enabled: 1
-    path: Assets/Scenes/Past - Manor.unity
+    path: Assets/Scenes/Pink Section/Past - Manor.unity
     guid: 6af009689987aa64db224fe4214e283c
   - enabled: 1
     path: Assets/Scenes/TestScenes/TimeTest.unity
@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScenes/Past-TimeTest.unity
     guid: d4e69491536167049a7ebbfc727b9080
+  - enabled: 1
+    path: Assets/Scenes/Pink Section/Room1-2.unity
+    guid: 7bcf28371fcdaf64ab23f7d36bc9f778
+  - enabled: 1
+    path: Assets/Scenes/Pink Section/Room1-3.unity
+    guid: 82f8d4ffbd8c71049a86968f28a10cae
   m_configObjects: {}
