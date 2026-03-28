@@ -48,10 +48,28 @@ Includes an enum for all 4 possible options in the OptionWheel (Top, Left, Right
 
 You can edit these 4 parameters in the Inspector of any **Interactable** objects.
 
+### PlacementPoint.cs
+
+This is the script responsible for all the little points around the manor where you can place down objects. It uses the Interactable script to open the wheel and dynamically connects the WheelActions with the functions in this script, StateManager, and the new Inventory system. To find out how items are actually placed, see **InventoryController.cs**.
+
+PlacementPoint syncs objects across scenes by using ObjectIDs and rules. Every placement point has a hashmap that connects an ItemData with associated objects that are destroyed or spawned on placement. You set these by manually putting the objectIDs of the objects you want destroyed/spawned in the Inspector of the PlacementPoint. This updates the SceneStateManager hashmap which includes those objectIDs.
+
 
 ## Inventory Scripts
 
 The scripts that handle Inventory are InventorySlot.cs, InventoryUI.cs, andPlayerInventory.cs. I'm not going to expand on these because you wrote them.
+
+### INVENTORY UPDATES
+
+### ItemData.cs
+
+Before, all of our Items were just strings. This is not enough information for the PlaceableObject system, so I created a new Resource called "ItemData" which can be created and placed as an Asset in our project. The ItemData is just a structure that includse the item's name, prefab that will be instantiated when placed, a sprite that will be shown in the inventoryUI, and a placement offset. The placement offset is the y-axis for the object and has to be configured so the item doesn't spawn in the floor when instantiated on a PlacementPoint.
+
+When I refactored the rest of the code, I made minimal changes so everything still treats the Inventory items being strings. Just instead of directly accessing Item as if it were a string, it just accesses ItemData.itemName.
+
+### InventoryController.cs
+
+This script allows the player to scroll through their inventory when interacting with a PlacementPoint. It allows us to change the controls so we can do a vertical or horizontal inventory. It's functions are called when the player interacts with a PlacementPoint and this thing should be placed on the GameManager empty object that includes all of our other managers.
 
 ## Player Scripts
 
@@ -98,3 +116,9 @@ For scripts where I don't really know how to categorize yet.
 ### DialogueDisplay.cs
 
 This is the script that we can reuse for all dialogue-related implementations. All the flavor text that appears when you interact with an object uses this script.
+
+### ChangeRoom.cs
+
+Basically how the Room transition works is that there is an empty GameObject with this script on it. You set the destinationScene as the literal name of the scene it should go to. This includes spaces so be careful.
+
+Every Room transition needs a RoomID because it needs to find the corresponding Room transition in the other scene so it knows where to spawn the player. So the entrance and the exit need to have the same RoomID. To actually know where to spawn the player, there is a child object attached to the Prefab that holds the ChangeRoom.cs script. The position of this child object is where the player will spawn. 
