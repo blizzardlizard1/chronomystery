@@ -28,15 +28,39 @@ public class TwineDialogueController : MonoBehaviour
 
     public void SelectChoice(int index)
     {
-        if (index < 0 || index >= current.choices.Count) return;
+        if (current == null || index < 0 || index >= current.choices.Count)
+            return;
 
-        string next = current.choices[index].targetPassage;
-        StartAt(next);
+        TwineChoice choice = current.choices[index];
+
+        // 1. Detect end dialogue choices
+        if (IsEndChoice(choice.label))
+        {
+            DialogueUI.Instance.Hide();
+            current = null;
+            return;
+        }
+
+        // 2. Jump to next passage
+        StartAt(choice.targetPassage);
+    }
+
+    private bool IsEndChoice(string label)
+    {
+        if (string.IsNullOrEmpty(label))
+            return false;
+
+        string lower = label.ToLower();
+
+        return lower.Contains("end dialogue") ||
+               lower == "end" ||
+               lower.Contains("goodbye") ||
+               lower.Contains("bye");
     }
 
     private void ShowCurrent()
     {
-        // Hook this into your existing Dialogue UI system
+        // Hook this into existing Dialogue UI system
         DialogueUI.Instance.Show(
             current.text,
             current.choices
