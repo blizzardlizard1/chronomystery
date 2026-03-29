@@ -394,8 +394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0630f77efc1cc0342807609d092ca37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  twineHtml: {fileID: 4900000, guid: 0719b6304c6bbc44482bdb0df64bbcb2, type: 3}
-  startPassage: Investigate the mirror stand
+  twineHtml: {fileID: 4900000, guid: 99c46b8a4759cfa4daec6307dbfeb2c7, type: 3}
+  startPassage: Investigate the billiard table
 --- !u!1 &103825319
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,7 +2148,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24670
+  m_Name: pb_Mesh34582
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
