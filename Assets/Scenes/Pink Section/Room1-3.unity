@@ -782,58 +782,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: 10.64, z: 0}
---- !u!1 &1709002217
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1709002219}
-  - component: {fileID: 1709002218}
-  m_Layer: 0
-  m_Name: Sock Puzzle Tracker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1709002218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709002217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cad7372a697eb8846b60c4856c8b53f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  steps:
-  - {fileID: 11400000, guid: 4a7d05f23ea60f94c8c6ec5dc5239cbf, type: 2}
-  - {fileID: 11400000, guid: 81c6fd8259bccaa4ea2ef5ed95a0de83, type: 2}
-  - {fileID: 11400000, guid: 0fa0dabdc80ef1044975323a59493553, type: 2}
-  - {fileID: 11400000, guid: b86dc677d97727944aa2f0fe9cb4665c, type: 2}
-  - {fileID: 11400000, guid: b626e28e5c6ff994bb6ee93f9cd27ba0, type: 2}
-  currentStepIndex: 0
-  puzzleComplete: 0
---- !u!4 &1709002219
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709002217}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.445282, y: -13.746523, z: -30.218754}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145465368
 GameObject:
   m_ObjectHideFlags: 0
