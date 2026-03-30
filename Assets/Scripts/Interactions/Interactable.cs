@@ -52,9 +52,13 @@ public class Interactable : MonoBehaviour
     /// Called when player presses SPACE. Opens wheel if actions exist,
     /// otherwise falls back to legacy onInteract event.
     public void Interact()
-    {
+    {   
+
         if (HasWheelActions)
-        {
+        {   
+            if (InteractionWheel.Instance.isOpen)
+                return;
+            
             InteractionUI.Instance.Hide();
             InteractionWheel.Instance.Open(this);
         }

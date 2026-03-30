@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Floor
-    second: {fileID: 2100000, guid: 791e2503b8e726945bcf7830c620cec1, type: 2}
+    second: {fileID: 2100000, guid: 02ff548800b03534bb21b6ec60765c18, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

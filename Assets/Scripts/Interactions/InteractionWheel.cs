@@ -8,22 +8,20 @@ public class InteractionWheel : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private GameObject wheelPanel;
-    [SerializeField] private Image[] segments;  // 4 images: [Move, Break, Place, Change]
-    [SerializeField] private TMPro.TextMeshProUGUI[] labels; // Optional: 4 text labels
+    [SerializeField] private Image[] segments;
+    [SerializeField] private TMPro.TextMeshProUGUI[] labels;
 
     [Header("Colors")]
     [SerializeField] private Color disabled = new Color(0.3f, 0.3f, 0.3f, 0.4f);
     [SerializeField] private float highlightBrightness = 1.3f;
     [SerializeField] private float dimAmount = 0.6f;
 
-    [Header("Input")]
-    [SerializeField] private float deadzone = 0.4f;
-
-    private bool isOpen;
+    public bool isOpen;
     private int selected = -1;
     private Interactable target;
     private bool[] segmentAvailable = new bool[4];
     private Color[] originalColors = new Color[4];
+    private bool ignoreFirstFrame;
 
     public bool IsOpen => isOpen;
 
@@ -32,7 +30,6 @@ public class InteractionWheel : MonoBehaviour
         Instance = this;
         wheelPanel.SetActive(false);
 
-        // Cache the original colors set in the editor
         for (int i = 0; i < 4; i++)
             originalColors[i] = segments[i].color;
     }
@@ -42,6 +39,7 @@ public class InteractionWheel : MonoBehaviour
         target = obj;
         isOpen = true;
         selected = -1;
+        ignoreFirstFrame = true; // Skip the frame that opened us
         wheelPanel.SetActive(true);
 
         var inv = PlayerController.Instance.GetComponent<PlayerInventory>();
@@ -78,6 +76,14 @@ public class InteractionWheel : MonoBehaviour
     {
         if (!isOpen) return;
 
+        // Skip the frame that opened the wheel so the Space press
+        // that triggered Interact() doesn't bleed through
+        if (ignoreFirstFrame)
+        {
+            ignoreFirstFrame = false;
+            return;
+        }
+
         // Cancel
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
         {
@@ -85,30 +91,18 @@ public class InteractionWheel : MonoBehaviour
             return;
         }
 
-        // Read raw input (same axes your PlayerController uses)
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        Vector2 dir = new Vector2(h, v);
-
-        if (dir.magnitude > deadzone)
-        {
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            if (angle < 0) angle += 360f;
-            selected = AngleToIndex(angle);
-
-            // Don't allow selecting disabled segments
-            if (!segmentAvailable[selected]) selected = -1;
-        }
-        else
-        {
-            selected = -1;
-        }
+        // Tap to select
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) TrySelect(0);
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) TrySelect(1);
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) TrySelect(2);
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) TrySelect(3);
 
         UpdateVisuals();
 
         // Confirm
         if (selected >= 0 && Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("hi");
             var entry = target.supportedActions.FirstOrDefault(e => e.action == (WheelAction)selected);
 
             if (!string.IsNullOrEmpty(entry.dialogue))
@@ -116,28 +110,20 @@ public class InteractionWheel : MonoBehaviour
 
             target.ExecuteWheelAction(entry.action);
             var inv = PlayerController.Instance.GetComponent<PlayerInventory>();
-            if (entry.requiredItem && entry.destroyRequired) {
+            if (entry.requiredItem && entry.destroyRequired)
+            {
                 inv.RemoveItem(entry.requiredItem);
             }
             Close();
         }
     }
 
-    /// Maps input angle to segment index.
-    /// Adjust these ranges to match your wheel's visual layout.
-    private int AngleToIndex(float angle)
+    private void TrySelect(int index)
     {
-        //       0
-        //       |
-        //  3 ---+--- 1
-        //       |
-        //       2
-
-        if (angle >= 45f  && angle < 135f)  return 0; // Top
-        if (angle >= 315f || angle < 45f)   return 1; // Right
-        if (angle >= 225f && angle < 315f)  return 2; // Bottom
-        return 3;                                       // Left
+        if (segmentAvailable[index])
+            selected = index;
     }
+
     private void UpdateVisuals()
     {
         for (int i = 0; i < 4; i++)

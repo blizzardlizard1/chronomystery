@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointID: first
-  preplacedItem: {fileID: 11400000, guid: 54d1956e2603c184b8497c4eb2dc4290, type: 2}
+  preplacedItem: {fileID: 0}
   rules:
   - item: {fileID: 0}
     idsToDestroy: []

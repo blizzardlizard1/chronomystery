@@ -26,4 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pink Section/Room1-4.unity
     guid: 89c2d2c98061ae54c805107f37b7265f
+  - enabled: 1
+    path: Assets/Scenes/Pink Section/Past-Room1-2.unity
+    guid: 36a7f7cea06b60d4ea05f8308e18b9a9
+  - enabled: 1
+    path: Assets/Scenes/Pink Section/Past-Room1-3.unity
+    guid: cec466d95b5e31241b8a2e90a33c369b
+  - enabled: 1
+    path: Assets/Scenes/Pink Section/Past-Room1-4.unity
+    guid: 392a25931bf620441907448a314a7f0b
   m_configObjects: {}

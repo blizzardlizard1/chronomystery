@@ -10,9 +10,14 @@ public class PlacementPoint : MonoBehaviour
         public ItemData item;
         public string[] idsToDestroy;
         public string[] idsToReveal;
+
+        [Tooltip("If set, this item appears on the present version of this point when placed in the past.")]
+        public ItemData presentItem;
     }
 
     [SerializeField] private string pointID;
+    [SerializeField] private string presentPointID;
+    [SerializeField] private string pastPointID;
     [SerializeField] private ItemData preplacedItem;
     [SerializeField] private PlacementRule[] rules;
     [SerializeField] private LayerMask groundLayer;
@@ -53,7 +58,7 @@ public class PlacementPoint : MonoBehaviour
 
     private void RefreshWheel()
     {
-        _interactable.supportedActions.Clear();
+        // _interactable.supportedActions.Clear();
         _interactable.onTopAction.RemoveAllListeners();
         _interactable.onBottomAction.RemoveAllListeners();
 
@@ -78,9 +83,11 @@ public class PlacementPoint : MonoBehaviour
             PlayerController.Instance.GetComponent<PlayerInventory>().AddItem(_placedItem);
             DestroyObject();
             ReverseRule(_activeRule);
+            ClearCounterpartIDs();
             SceneStateManager.Instance.ClearPlacedItem(pointID);
             _placedItem = null;
             _activeRule = null;
+            _isPreplaced = false;
         }
 
         _placedItem = item;
@@ -90,6 +97,7 @@ public class PlacementPoint : MonoBehaviour
         PlayerController.Instance.GetComponent<PlayerInventory>().RemoveItem(item);
         SpawnObject(item);
         ApplyRule(_activeRule);
+        SetCounterpartID(_activeRule);
         RefreshWheel();
     }
 
@@ -100,6 +108,7 @@ public class PlacementPoint : MonoBehaviour
         PlayerController.Instance.GetComponent<PlayerInventory>().AddItem(_placedItem);
         DestroyObject();
         ReverseRule(_activeRule);
+        ClearCounterpartIDs();
 
         var mgr = SceneStateManager.Instance;
         if (_isPreplaced) mgr.MarkPickedUp(pointID);
@@ -107,6 +116,7 @@ public class PlacementPoint : MonoBehaviour
 
         _placedItem = null;
         _activeRule = null;
+        _isPreplaced = false;
         RefreshWheel();
     }
 
@@ -136,10 +146,26 @@ public class PlacementPoint : MonoBehaviour
         foreach (var id in rule.idsToReveal) mgr.UnmarkSpawned(id);
     }
 
+    private void SetCounterpartID(PlacementRule rule)
+    {
+        if (string.IsNullOrEmpty(presentPointID)) return;
+        if (rule?.presentItem != null)
+            SceneStateManager.Instance.SetPlacedItem(presentPointID, rule.presentItem);
+        else
+            SceneStateManager.Instance.ClearPlacedItem(presentPointID);
+    }
+
+    private void ClearCounterpartIDs()
+    {
+        var mgr = SceneStateManager.Instance;
+        if (!string.IsNullOrEmpty(presentPointID)) mgr.ClearPlacedItem(presentPointID);
+        if (!string.IsNullOrEmpty(pastPointID)) mgr.ClearPlacedItem(pastPointID);
+    }
+
     private void SpawnObject(ItemData item)
     {
         if (item?.worldPrefab != null)
-            _spawnedObject = Instantiate(item.worldPrefab, GetSurfacePosition(item), transform.rotation);
+            _spawnedObject = Instantiate(item.worldPrefab, GetSurfacePosition(item), Quaternion.identity);
     }
 
     private void DestroyObject()

@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Socks
   icon: {fileID: 0}
   worldPrefab: {fileID: 3055975389485875036, guid: 13f40fbb6b5821f4da4dabf5b544823d, type: 3}
-  placementOffset: 0.1
+  placementOffset: 0.25
