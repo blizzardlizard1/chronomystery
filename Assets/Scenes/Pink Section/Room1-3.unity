@@ -815,6 +815,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4a7d05f23ea60f94c8c6ec5dc5239cbf, type: 2}
   - {fileID: 11400000, guid: 81c6fd8259bccaa4ea2ef5ed95a0de83, type: 2}
   - {fileID: 11400000, guid: 0fa0dabdc80ef1044975323a59493553, type: 2}
+  - {fileID: 11400000, guid: b86dc677d97727944aa2f0fe9cb4665c, type: 2}
+  - {fileID: 11400000, guid: b626e28e5c6ff994bb6ee93f9cd27ba0, type: 2}
   currentStepIndex: 0
   puzzleComplete: 0
 --- !u!4 &1709002219
