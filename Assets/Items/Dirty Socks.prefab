@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3055975389485875033}
   - component: {fileID: 3055975389485875038}
   m_Layer: 0
-  m_Name: Socks
+  m_Name: Dirty Socks
   m_TagString: Socks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

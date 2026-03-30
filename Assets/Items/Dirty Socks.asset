@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c329cb880d1309b41be16d968cd07d1f, type: 3}
-  m_Name: Socks
+  m_Name: Dirty Socks
   m_EditorClassIdentifier: 
-  itemName: Socks
+  itemName: Dirty socks
   icon: {fileID: 0}
-  worldPrefab: {fileID: 3055975389485875036, guid: 13f40fbb6b5821f4da4dabf5b544823d, type: 3}
-  placementOffset: 0.1
+  worldPrefab: {fileID: 3055975389485875036, guid: 0a79e33ae68a57a418bbf15ee7ec8989, type: 3}
+  placementOffset: 0
