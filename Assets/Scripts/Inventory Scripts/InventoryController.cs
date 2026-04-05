@@ -32,6 +32,7 @@ public class InventoryController : MonoBehaviour
         if (!_isActive) return;
 
         PlayerController.Instance.SetMovementLocked(true);
+        PlayerInteraction.Instance.SetInteractionLocked(true);
 
         if (Input.GetKeyDown(navigateLeftKey))
             Navigate(-1);
@@ -59,6 +60,7 @@ public class InventoryController : MonoBehaviour
 
         _isActive = true;
         PlayerController.Instance.SetMovementLocked(true);
+        PlayerInteraction.Instance.SetInteractionLocked(true);
         _inventoryUI.SetNavigating(true, _selectedSlot);
     }
 
@@ -83,6 +85,7 @@ public class InventoryController : MonoBehaviour
         _activePlacementPoint = null;
         PlayerController.Instance.SetMovementLocked(false);
         _inventoryUI.SetNavigating(false, -1);
+        PlayerInteraction.Instance.SetInteractionLocked(false);
     }
 
     // Called when the player "confirms" by pressing navigateLeft/Right and landing,
