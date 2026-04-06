@@ -3,7 +3,11 @@ guid: 270cf45b799801242bec0f78d6a2187a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - root: {fileID: 8457200019729032807, guid: 58e942fb15b56fd4db02513791611bfc, type: 3}
+  - dialogueText: {instanceID: 0}
+  - choiceContainer: {instanceID: 0}
+  - choiceButtonPrefab: {fileID: 2931665200738527117, guid: 55f8e03710677b74886d9f01b69ee15c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

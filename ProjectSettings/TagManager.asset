@@ -9,6 +9,8 @@ TagManager:
   - Trap
   - Socks
   - Dirty
+  - Skeleton
+  - Balls
   layers:
   - Default
   - TransparentFX

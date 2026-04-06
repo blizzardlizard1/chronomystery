@@ -1,69 +1,60 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class TwineDialogueController : MonoBehaviour
 {
     public static TwineDialogueController Instance;
 
-    private Dictionary<string, TwinePassage> passages;
-    private TwinePassage current;
+    private TwineHTMLParser parser = new TwineHTMLParser();
+    public TwinePassage currentPassage;
 
-    void Awake() => Instance = this;
-
-    public void LoadTwine(string htmlText)
+    private void Awake()
     {
-        passages = TwineHTMLParser.Parse(htmlText);
+        Instance = this;
     }
 
-    public void StartAt(string passageName)
+    public void LoadTwine(string html)
     {
-        if (!passages.TryGetValue(passageName, out current))
+        parser.LoadTwine(html);
+    }
+
+    public void StartDialogue()
+    {
+        if (parser.startPassageName == null)
         {
-            Debug.LogError("Twine: Could not find passage " + passageName);
+            Debug.LogError("TwineDialogueController: No start passage detected.");
             return;
         }
 
-        ShowCurrent();
+        Debug.Log($"TwineDialogueController: Starting at '{parser.startPassageName}'");
+
+        ShowPassage(parser.startPassageName);
     }
 
-    public void SelectChoice(int index)
+    public void ShowPassage(string name)
     {
-        if (current == null || index < 0 || index >= current.choices.Count)
+        if (!parser.passages.TryGetValue(name, out var passage))
+        {
+            Debug.LogError($"TwineDialogueController: Passage '{name}' not found.");
             return;
+        }
 
-        TwineChoice choice = current.choices[index];
+        currentPassage = passage;
 
-        // 1. Detect end dialogue choices
-        if (IsEndChoice(choice.label))
+        DialogueUI.Instance.ShowPassage(passage);
+
+        // Play voice audio clip (optional)
+        if (passage.voiceClip != null)
+            AudioSource.PlayClipAtPoint(passage.voiceClip, Camera.main.transform.position);
+    }
+
+    public void Choose(TwineChoice choice)
+    {
+        if (choice.targetPassageName == "*End dialogue*")
         {
             DialogueUI.Instance.Hide();
-            current = null;
             return;
         }
 
-        // 2. Jump to next passage
-        StartAt(choice.targetPassage);
-    }
-
-    private bool IsEndChoice(string label)
-    {
-        if (string.IsNullOrEmpty(label))
-            return false;
-
-        string lower = label.ToLower();
-
-        return lower.Contains("end dialogue") ||
-               lower == "end" ||
-               lower.Contains("goodbye") ||
-               lower.Contains("bye");
-    }
-
-    private void ShowCurrent()
-    {
-        // Hook this into existing Dialogue UI system
-        DialogueUI.Instance.Show(
-            current.text,
-            current.choices
-        );
+        ShowPassage(choice.targetPassageName);
     }
 }

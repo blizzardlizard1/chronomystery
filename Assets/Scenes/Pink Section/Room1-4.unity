@@ -249,6 +249,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc5525d3f78e434282fc3e06ffa94be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPassage:
+    pid: 
+    name: 
+    rawText: 
+    cleanedText: 
+    choices: []
+    voiceClip: {fileID: 0}
 --- !u!4 &23829284
 Transform:
   m_ObjectHideFlags: 0
@@ -461,7 +468,7 @@ GameObject:
   - component: {fileID: 151201995}
   m_Layer: 0
   m_Name: Pool Balls
-  m_TagString: Untagged
+  m_TagString: Balls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1222,8 +1229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0630f77efc1cc0342807609d092ca37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  twineHtml: {fileID: 4900000, guid: 99c46b8a4759cfa4daec6307dbfeb2c7, type: 3}
-  startPassage: Investigate the billiard table
+  dialogueBank: {fileID: 11400000, guid: b31a8e13e36613748ac98aec8d45acd9, type: 2}
 --- !u!114 &822720464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3789,6 +3795,14 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8457200019729032806, guid: 58e942fb15b56fd4db02513791611bfc, type: 3}
+      propertyPath: root
+      value: 
+      objectReference: {fileID: 2145299188}
+    - target: {fileID: 8457200019729032806, guid: 58e942fb15b56fd4db02513791611bfc, type: 3}
+      propertyPath: choiceButtonPrefab
+      value: 
+      objectReference: {fileID: 2931665200738527117, guid: 55f8e03710677b74886d9f01b69ee15c, type: 3}
     - target: {fileID: 8457200019729032807, guid: 58e942fb15b56fd4db02513791611bfc, type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
@@ -3815,6 +3829,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e942fb15b56fd4db02513791611bfc, type: 3}
+--- !u!1 &2145299188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8457200019729032807, guid: 58e942fb15b56fd4db02513791611bfc, type: 3}
+  m_PrefabInstance: {fileID: 2145299187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &152858791872817590
 MeshRenderer:
   m_ObjectHideFlags: 0

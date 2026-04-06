@@ -1,86 +1,120 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Net;   // For HtmlDecode
+using UnityEngine;
 
-public static class TwineHTMLParser
+public class TwineHTMLParser
 {
-    public static Dictionary<string, TwinePassage> Parse(string html)
+    public Dictionary<string, TwinePassage> passages = new();
+    public string startPassageName = null;
+
+    public void LoadTwine(string html)
     {
-        var passages = new Dictionary<string, TwinePassage>();
+        passages.Clear();
+        startPassageName = null;
 
-        var passageRegex = new Regex(
-            "<tw-passagedata[^>]*name=\"([^\"]+)\"[^>]*>([\\s\\S]*?)</tw-passagedata>|" +
-            "<div[^>]*tiddler=\"([^\"]+)\"[^>]*>([\\s\\S]*?)</div>"
-        );
+        // 1. Detect startnode PID
+        var storyMatch = Regex.Match(html,
+            @"<tw-storydata[^>]*startnode=""(\d+)""", RegexOptions.IgnoreCase);
 
-        foreach (Match m in passageRegex.Matches(html))
+        if (!storyMatch.Success)
         {
-            string title = m.Groups[1].Success ? m.Groups[1].Value : m.Groups[3].Value;
-            string rawText = m.Groups[2].Success ? m.Groups[2].Value : m.Groups[4].Value;
-
-            var passage = new TwinePassage();
-            passage.title = title;
-
-            // Clean passage dialogue text
-            passage.text = CleanText(rawText);
-
-            // Extract choices
-            var linkRegex = new Regex("\\[\\[([^\\]]+?)(?:->([^\\]]+))?\\]\\]");
-            foreach (Match link in linkRegex.Matches(rawText))
-            {
-                string rawLabel  = link.Groups[1].Value;
-                string rawTarget = link.Groups[2].Success ? link.Groups[2].Value : rawLabel;
-
-                string cleanLabel = CleanChoice(rawLabel);
-
-                passage.choices.Add(new TwineChoice
-                {
-                    label = cleanLabel,   // ❤️ Cleaned!
-                    targetPassage = rawTarget
-                });
-            }
-
-            passages[title] = passage;
+            Debug.LogError("TwineHTMLParser: Could not find <tw-storydata> or startnode.");
+            return;
         }
 
-        return passages;
+        string startPID = storyMatch.Groups[1].Value;
+        Debug.Log($"TwineHTMLParser: Found startnode pid = {startPID}");
+
+        // 2. Parse all passages
+        var matches = Regex.Matches(html,
+            @"<tw-passagedata[^>]*pid=""(\d+)""[^>]*name=""([^""]*)""[^>]*>([\s\S]*?)</tw-passagedata>",
+            RegexOptions.IgnoreCase);
+
+        foreach (Match m in matches)
+        {
+            string pid = m.Groups[1].Value;
+            string name = m.Groups[2].Value;
+            string text = m.Groups[3].Value;
+
+            var passage = new TwinePassage
+            {
+                pid = pid,
+                name = name,
+                rawText = text
+            };
+
+            passages[name] = passage;
+
+            // If PID matches startnode, mark this as the start passage
+            if (pid == startPID)
+            {
+                startPassageName = name;
+                Debug.Log($"TwineHTMLParser: Start passage resolved to '{name}'");
+            }
+        }
+
+        // 3. Clean & extract choices
+        foreach (var p in passages.Values)
+        {
+            p.cleanedText = CleanText(p.rawText);
+            p.choices = ExtractChoices(p.rawText);
+        }
     }
 
-    /// <summary>
-    /// Cleans Twine passage display text.
-    /// - HTML decode
-    /// - Remove [[links]]
-    /// - Remove HTML tags
-    /// - Trim whitespace
-    /// </summary>
-    private static string CleanText(string input)
+    // Removes HTML entities + clears [[links]]
+    private string CleanText(string raw)
     {
-        if (string.IsNullOrEmpty(input))
-            return "";
+        string t = raw;
 
-        string decoded = WebUtility.HtmlDecode(input);
-        decoded = Regex.Replace(decoded, "\\[\\[(.*?)\\]\\]", "");
-        decoded = Regex.Replace(decoded, "<.*?>", "");
+        // Remove choice markup COMPLETELY from display text
+        t = Regex.Replace(t, @"\[\[([^\|\]]+)\|([^\]]+)\]\]", ""); // [[Text|Target]]
+        t = Regex.Replace(t, @"\[\[([^\]]+)\]\]", "");             // [[Target]]
 
-        return decoded.Trim();
+        // Decode Twine HTML entities
+        t = t.Replace("&quot;", "\"")
+             .Replace("&#39;", "'")
+             .Replace("&amp;", "&");
+
+        // Strip all HTML tags
+        t = Regex.Replace(t, "<.*?>", "");
+
+        return t.Trim();
     }
 
-    /// <summary>
-    /// Cleans Twine choice label text.
-    /// - HTML decode
-    /// - Remove HTML tags
-    /// - Trim whitespace
-    /// (Do NOT remove [[...]] since the label is already extracted)
-    /// </summary>
-    private static string CleanChoice(string input)
+    // Returns all choices inside a passage
+    private List<TwineChoice> ExtractChoices(string raw)
     {
-        if (string.IsNullOrEmpty(input))
-            return "";
+        List<TwineChoice> list = new();
 
-        string decoded = WebUtility.HtmlDecode(input);
-        decoded = Regex.Replace(decoded, "<.*?>", "");
+        // Format: [[Choice Text|Target]]
+        var linkMatches = Regex.Matches(raw, @"\[\[([^\|\]]+)\|([^\]]+)\]\]");
 
-        return decoded.Trim();
+        foreach (Match m in linkMatches)
+        {
+            list.Add(new TwineChoice
+            {
+                text = CleanText(m.Groups[1].Value),
+                targetPassageName = m.Groups[2].Value
+            });
+        }
+
+        // Format: [[Target]]
+        var simpleMatches = Regex.Matches(raw, @"\[\[([^\]]+)\]\]");
+
+        foreach (Match m in simpleMatches)
+        {
+            string target = m.Groups[1].Value;
+
+            if (!list.Exists(c => c.targetPassageName == target))
+            {
+                list.Add(new TwineChoice
+                {
+                    text = CleanText(target),
+                    targetPassageName = target
+                });
+            }
+        }
+
+        return list;
     }
 }

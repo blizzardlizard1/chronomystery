@@ -11,6 +11,9 @@ public class ObjectSync : MonoBehaviour
     void OnEnable() => SceneStateManager.Instance.Register(objectID, this);
     void OnDisable() => SceneStateManager.Instance.Unregister(objectID);
 
+
+    public string ObjectID => objectID;
+    public bool StartsHidden => startsHidden;
     void Start()
     {
         var mgr = SceneStateManager.Instance;
@@ -48,4 +51,5 @@ public class ObjectSync : MonoBehaviour
         foreach (var r in GetComponentsInChildren<Renderer>()) r.enabled = true;
         foreach (var c in GetComponentsInChildren<Collider>()) c.enabled = true;
     }
+
 }
