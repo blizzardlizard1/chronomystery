@@ -256,6 +256,12 @@ MonoBehaviour:
     cleanedText: 
     choices: []
     voiceClip: {fileID: 0}
+  activeEntry:
+    htmlFile: {fileID: 0}
+    requiredTag: 
+    itemsRequiredBeforeDialogue: []
+    itemsGivenToPlayer: []
+    itemsTakenFromPlayer: []
 --- !u!4 &23829284
 Transform:
   m_ObjectHideFlags: 0
@@ -1835,7 +1841,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-595578
+  m_Name: pb_Mesh-23480
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

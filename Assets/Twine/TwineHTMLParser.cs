@@ -5,55 +5,44 @@ using UnityEngine;
 public class TwineHTMLParser
 {
     public Dictionary<string, TwinePassage> passages = new();
-    public string startPassageName = null;
+    public string startPassageName;
 
     public void LoadTwine(string html)
     {
         passages.Clear();
         startPassageName = null;
 
-        // 1. Detect startnode PID
         var storyMatch = Regex.Match(html,
-            @"<tw-storydata[^>]*startnode=""(\d+)""", RegexOptions.IgnoreCase);
+            @"<tw-storydata[^>]*startnode=""(\d+)""",
+            RegexOptions.IgnoreCase);
 
         if (!storyMatch.Success)
         {
-            Debug.LogError("TwineHTMLParser: Could not find <tw-storydata> or startnode.");
+            Debug.LogError("No startnode found.");
             return;
         }
 
         string startPID = storyMatch.Groups[1].Value;
-        Debug.Log($"TwineHTMLParser: Found startnode pid = {startPID}");
 
-        // 2. Parse all passages
         var matches = Regex.Matches(html,
             @"<tw-passagedata[^>]*pid=""(\d+)""[^>]*name=""([^""]*)""[^>]*>([\s\S]*?)</tw-passagedata>",
             RegexOptions.IgnoreCase);
 
         foreach (Match m in matches)
         {
-            string pid = m.Groups[1].Value;
-            string name = m.Groups[2].Value;
-            string text = m.Groups[3].Value;
-
-            var passage = new TwinePassage
+            var p = new TwinePassage
             {
-                pid = pid,
-                name = name,
-                rawText = text
+                pid = m.Groups[1].Value,
+                name = CleanName(m.Groups[2].Value),
+                rawText = m.Groups[3].Value
             };
 
-            passages[name] = passage;
+            passages[p.name] = p;
 
-            // If PID matches startnode, mark this as the start passage
-            if (pid == startPID)
-            {
-                startPassageName = name;
-                Debug.Log($"TwineHTMLParser: Start passage resolved to '{name}'");
-            }
+            if (p.pid == startPID)
+                startPassageName = p.name;
         }
 
-        // 3. Clean & extract choices
         foreach (var p in passages.Values)
         {
             p.cleanedText = CleanText(p.rawText);
@@ -61,60 +50,84 @@ public class TwineHTMLParser
         }
     }
 
-    // Removes HTML entities + clears [[links]]
     private string CleanText(string raw)
     {
         string t = raw;
 
-        // Remove choice markup COMPLETELY from display text
-        t = Regex.Replace(t, @"\[\[([^\|\]]+)\|([^\]]+)\]\]", ""); // [[Text|Target]]
-        t = Regex.Replace(t, @"\[\[([^\]]+)\]\]", "");             // [[Target]]
-
-        // Decode Twine HTML entities
+        t = Regex.Replace(t, @"\[\[[^\]]+\]\]", "");
         t = t.Replace("&quot;", "\"")
              .Replace("&#39;", "'")
              .Replace("&amp;", "&");
 
-        // Strip all HTML tags
         t = Regex.Replace(t, "<.*?>", "");
 
         return t.Trim();
     }
 
-    // Returns all choices inside a passage
     private List<TwineChoice> ExtractChoices(string raw)
     {
         List<TwineChoice> list = new();
 
-        // Format: [[Choice Text|Target]]
-        var linkMatches = Regex.Matches(raw, @"\[\[([^\|\]]+)\|([^\]]+)\]\]");
+        var matches = Regex.Matches(raw, @"\[\[([^\]]+)\]\]");
 
-        foreach (Match m in linkMatches)
+        foreach (Match m in matches)
         {
+            string content = m.Groups[1].Value;
+
+            string text;
+            string target;
+
+            if (content.Contains("|"))
+            {
+                var parts = content.Split('|');
+                text = CleanChoiceText(parts[0]);   // what player sees
+                target = CleanName(parts[1]);       // passage lookup key
+            }
+            else
+            {
+                text = CleanChoiceText(content);
+                target = CleanName(content);
+            }
+
             list.Add(new TwineChoice
             {
-                text = CleanText(m.Groups[1].Value),
-                targetPassageName = m.Groups[2].Value
+                text = text,
+                targetPassageName = target
             });
-        }
-
-        // Format: [[Target]]
-        var simpleMatches = Regex.Matches(raw, @"\[\[([^\]]+)\]\]");
-
-        foreach (Match m in simpleMatches)
-        {
-            string target = m.Groups[1].Value;
-
-            if (!list.Exists(c => c.targetPassageName == target))
-            {
-                list.Add(new TwineChoice
-                {
-                    text = CleanText(target),
-                    targetPassageName = target
-                });
-            }
         }
 
         return list;
     }
+
+    private string CleanChoiceText(string raw)
+    {
+        string t = raw;
+
+        // Decode HTML entities
+        t = t.Replace("&quot;", "\"")
+             .Replace("&#39;", "'")
+             .Replace("&amp;", "&");
+
+        // Strip HTML tags
+        t = Regex.Replace(t, "<.*?>", "");
+
+        return t.Trim();
+    }
+
+    private string CleanName(string raw)
+    {
+        if (string.IsNullOrEmpty(raw))
+            return raw;
+
+        string t = raw;
+
+        t = t.Replace("&quot;", "\"")
+             .Replace("&#39;", "'")
+             .Replace("&amp;", "&");
+
+        return t.Trim();
+    }
+
+
+
 }

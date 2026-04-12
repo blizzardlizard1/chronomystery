@@ -6,92 +6,79 @@ public class TwineInteractable : MonoBehaviour
 
     public void StartDialogue()
     {
-        if (dialogueBank == null)
-        {
-            Debug.LogError($"[{name}] No dialogue bank assigned.");
-            return;
-        }
-
-        Debug.Log($"[{name}] Starting dialogue check...");
-
         TwineDialogueBank.Entry fallback = null;
 
-        // 1. Check all tag-based entries
         foreach (var entry in dialogueBank.dialogues)
         {
-            string tag = entry.requiredTag;
-
-            if (string.IsNullOrEmpty(tag))
+            if (string.IsNullOrEmpty(entry.requiredTag))
             {
                 fallback = entry;
                 continue;
             }
 
-            var found = FindValidTaggedObject(tag);
-            Debug.Log($"[{name}] Requires '{tag}' → found: {found}");
+            var obj = FindValidTaggedObject(entry.requiredTag);
 
-            if (found != null)
+            if (obj == null)
+                continue;
+
+            // inventory requirement
+            bool hasAll = true;
+
+            if (entry.itemsRequiredBeforeDialogue != null)
             {
-                LoadEntry(entry);
-                return;
+                foreach (var item in entry.itemsRequiredBeforeDialogue)
+                {
+                    if (!PlayerInventory.Instance.HasItem(item))
+                    {
+                        hasAll = false;
+                        break;
+                    }
+                }
             }
-        }
 
-        // 2. Use fallback
-        if (fallback != null)
-        {
-            Debug.Log($"[{name}] Using fallback dialogue '{fallback.htmlFile.name}'.");
-            LoadEntry(fallback);
+            if (!hasAll)
+                continue;
+
+            Load(entry);
             return;
         }
 
-        Debug.LogWarning($"[{name}] No dialogues matched.");
+        if (fallback != null)
+        {
+            Load(fallback);
+        }
     }
 
-    private void LoadEntry(TwineDialogueBank.Entry entry)
+    private void Load(TwineDialogueBank.Entry entry)
     {
+        TwineDialogueController.Instance.activeEntry = entry;
         TwineDialogueController.Instance.LoadTwine(entry.htmlFile.text);
         TwineDialogueController.Instance.StartDialogue();
     }
 
-
     private GameObject FindValidTaggedObject(string tag)
     {
         var objs = GameObject.FindGameObjectsWithTag(tag);
-        var mgr = SceneStateManager.Instance;
 
         foreach (var obj in objs)
         {
             var sync = obj.GetComponent<ObjectSync>();
 
-            // If object has no ObjectSync, treat it as normal
             if (sync == null)
                 return obj;
 
-            // Skip if marked destroyed
+            var mgr = SceneStateManager.Instance;
+
             if (mgr.IsDestroyed(sync.ObjectID))
                 continue;
 
-            // If startsHidden but has not been spawned yet → ignore
-            bool isHidden = sync.StartsHidden && !mgr.IsSpawned(sync.ObjectID);
-            if (isHidden)
+            bool hidden = sync.StartsHidden && !mgr.IsSpawned(sync.ObjectID);
+            if (hidden)
                 continue;
 
-            // Check if at least one renderer is visible
-            bool rendererVisible = false;
             foreach (var r in obj.GetComponentsInChildren<Renderer>())
-            {
                 if (r.enabled)
-                {
-                    rendererVisible = true;
-                    break;
-                }
-            }
-
-            if (!rendererVisible)
-                continue;
-
-            return obj;
+                    return obj;
         }
 
         return null;

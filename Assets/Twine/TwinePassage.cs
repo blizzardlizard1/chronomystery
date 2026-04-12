@@ -6,11 +6,13 @@ public class TwinePassage
 {
     public string pid;
     public string name;
+
     public string rawText;
     public string cleanedText;
+
     public List<TwineChoice> choices = new List<TwineChoice>();
 
-    public AudioClip voiceClip; // Optional NPC audio
+    public AudioClip voiceClip;
 }
 
 [System.Serializable]

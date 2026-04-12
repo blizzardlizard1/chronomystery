@@ -7,7 +7,18 @@ public class TwineDialogueBank : ScriptableObject
     public class Entry
     {
         public TextAsset htmlFile;
-        public string requiredTag; // leave empty for fallback
+
+        [Header("Scene Conditions")]
+        public string requiredTag;
+
+        [Header("Inventory Requirements")]
+        public ItemData[] itemsRequiredBeforeDialogue;
+
+        [Header("Rewards")]
+        public ItemData[] itemsGivenToPlayer;
+
+        [Header("Costs")]
+        public ItemData[] itemsTakenFromPlayer;
     }
 
     public Entry[] dialogues;

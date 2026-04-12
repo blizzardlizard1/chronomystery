@@ -4,8 +4,10 @@ public class TwineDialogueController : MonoBehaviour
 {
     public static TwineDialogueController Instance;
 
-    private TwineHTMLParser parser = new TwineHTMLParser();
+    private TwineHTMLParser parser = new();
     public TwinePassage currentPassage;
+
+    public TwineDialogueBank.Entry activeEntry;
 
     private void Awake()
     {
@@ -21,40 +23,69 @@ public class TwineDialogueController : MonoBehaviour
     {
         if (parser.startPassageName == null)
         {
-            Debug.LogError("TwineDialogueController: No start passage detected.");
+            Debug.LogError("No start passage.");
             return;
         }
-
-        Debug.Log($"TwineDialogueController: Starting at '{parser.startPassageName}'");
 
         ShowPassage(parser.startPassageName);
     }
 
     public void ShowPassage(string name)
     {
-        if (!parser.passages.TryGetValue(name, out var passage))
+        if (!parser.passages.TryGetValue(name, out var p))
         {
-            Debug.LogError($"TwineDialogueController: Passage '{name}' not found.");
+            Debug.LogError("Missing passage: " + name);
             return;
         }
 
-        currentPassage = passage;
+        currentPassage = p;
 
-        DialogueUI.Instance.ShowPassage(passage);
+        DialogueUI.Instance.ShowPassage(p);
 
-        // Play voice audio clip (optional)
-        if (passage.voiceClip != null)
-            AudioSource.PlayClipAtPoint(passage.voiceClip, Camera.main.transform.position);
+        if (p.voiceClip != null)
+            AudioSource.PlayClipAtPoint(p.voiceClip, Camera.main.transform.position);
     }
 
-    public void Choose(TwineChoice choice)
+    public void Choose(TwineChoice c)
     {
-        if (choice.targetPassageName == "*End dialogue*")
+        if (c.targetPassageName == "*End dialogue*")
         {
             DialogueUI.Instance.Hide();
+            OnDialogueEnded();
             return;
         }
 
-        ShowPassage(choice.targetPassageName);
+        ShowPassage(c.targetPassageName);
+    }
+
+    public void OnDialogueEnded()
+    {
+        var entry = activeEntry;
+        if (entry == null) return;
+
+        var inv = PlayerInventory.Instance;
+
+        // Remove items
+        if (entry.itemsTakenFromPlayer != null)
+        {
+            foreach (var item in entry.itemsTakenFromPlayer)
+            {
+                if (inv.HasItem(item))
+                {
+                    inv.RemoveItem(item);
+                    Debug.Log("Removed: " + item.itemName);
+                }
+            }
+        }
+
+        // Give items
+        if (entry.itemsGivenToPlayer != null)
+        {
+            foreach (var item in entry.itemsGivenToPlayer)
+            {
+                if (inv.AddItem(item))
+                    Debug.Log("Given: " + item.itemName);
+            }
+        }
     }
 }
