@@ -1,69 +1,91 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class TwineDialogueController : MonoBehaviour
 {
     public static TwineDialogueController Instance;
 
-    private Dictionary<string, TwinePassage> passages;
-    private TwinePassage current;
+    private TwineHTMLParser parser = new();
+    public TwinePassage currentPassage;
 
-    void Awake() => Instance = this;
+    public TwineDialogueBank.Entry activeEntry;
 
-    public void LoadTwine(string htmlText)
+    private void Awake()
     {
-        passages = TwineHTMLParser.Parse(htmlText);
+        Instance = this;
     }
 
-    public void StartAt(string passageName)
+    public void LoadTwine(string html)
     {
-        if (!passages.TryGetValue(passageName, out current))
+        parser.LoadTwine(html);
+    }
+
+    public void StartDialogue()
+    {
+        if (parser.startPassageName == null)
         {
-            Debug.LogError("Twine: Could not find passage " + passageName);
+            Debug.LogError("No start passage.");
             return;
         }
 
-        ShowCurrent();
+        ShowPassage(parser.startPassageName);
     }
 
-    public void SelectChoice(int index)
+    public void ShowPassage(string name)
     {
-        if (current == null || index < 0 || index >= current.choices.Count)
+        if (!parser.passages.TryGetValue(name, out var p))
+        {
+            Debug.LogError("Missing passage: " + name);
             return;
+        }
 
-        TwineChoice choice = current.choices[index];
+        currentPassage = p;
 
-        // 1. Detect end dialogue choices
-        if (IsEndChoice(choice.label))
+        DialogueUI.Instance.ShowPassage(p);
+
+        if (p.voiceClip != null)
+            AudioSource.PlayClipAtPoint(p.voiceClip, Camera.main.transform.position);
+    }
+
+    public void Choose(TwineChoice c)
+    {
+        if (c.targetPassageName == "*End dialogue*")
         {
             DialogueUI.Instance.Hide();
-            current = null;
+            OnDialogueEnded();
             return;
         }
 
-        // 2. Jump to next passage
-        StartAt(choice.targetPassage);
+        ShowPassage(c.targetPassageName);
     }
 
-    private bool IsEndChoice(string label)
+    public void OnDialogueEnded()
     {
-        if (string.IsNullOrEmpty(label))
-            return false;
+        var entry = activeEntry;
+        if (entry == null) return;
 
-        string lower = label.ToLower();
+        var inv = PlayerInventory.Instance;
 
-        return lower.Contains("end dialogue") ||
-               lower == "end" ||
-               lower.Contains("goodbye") ||
-               lower.Contains("bye");
-    }
+        // Remove items
+        if (entry.itemsTakenFromPlayer != null)
+        {
+            foreach (var item in entry.itemsTakenFromPlayer)
+            {
+                if (inv.HasItem(item))
+                {
+                    inv.RemoveItem(item);
+                    Debug.Log("Removed: " + item.itemName);
+                }
+            }
+        }
 
-    private void ShowCurrent()
-    {
-        // Hook this into existing Dialogue UI system
-        DialogueUI.Instance.Show(
-            current.text,
-            current.choices
-        );
+        // Give items
+        if (entry.itemsGivenToPlayer != null)
+        {
+            foreach (var item in entry.itemsGivenToPlayer)
+            {
+                if (inv.AddItem(item))
+                    Debug.Log("Given: " + item.itemName);
+            }
+        }
     }
 }

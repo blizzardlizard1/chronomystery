@@ -8,8 +8,12 @@ public class PlayerInventory : MonoBehaviour
     public UnityEvent onInventoryChanged;
     public List<ItemData> slots = new List<ItemData>();
 
+    public static PlayerInventory Instance;
+
     private void Awake()
     {
+        Instance = this;
+
         for (int i = 0; i < inventorySize; i++)
             slots.Add(null);
     }
@@ -36,7 +40,8 @@ public class PlayerInventory : MonoBehaviour
         return true;
     }
 
-    public void RemoveItem(ItemData item) {
+    public void RemoveItem(ItemData item)
+    {
         int slot = slots.IndexOf(item);
         if (slot >= 0) RemoveItem(slot);
     }
@@ -52,7 +57,8 @@ public class PlayerInventory : MonoBehaviour
 
     public bool HasItem(ItemData item) => slots.Contains(item);
 
-    public bool HasItemName(string itemName) {
+    public bool HasItemName(string itemName)
+    {
         return slots.Exists(slot => slot != null && slot.itemName == itemName);
     }
 }

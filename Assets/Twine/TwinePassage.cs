@@ -1,16 +1,23 @@
 using System.Collections.Generic;
+using UnityEngine; // For AudioClip
 
 [System.Serializable]
 public class TwinePassage
 {
-    public string title;
-    public string text;
-    public List<TwineChoice> choices = new();
+    public string pid;
+    public string name;
+
+    public string rawText;
+    public string cleanedText;
+
+    public List<TwineChoice> choices = new List<TwineChoice>();
+
+    public AudioClip voiceClip;
 }
 
 [System.Serializable]
 public class TwineChoice
 {
-    public string label;
-    public string targetPassage;
+    public string text;
+    public string targetPassageName;
 }

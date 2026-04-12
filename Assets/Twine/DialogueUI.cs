@@ -1,53 +1,45 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
 
 public class DialogueUI : MonoBehaviour
 {
     public static DialogueUI Instance;
 
-    [Header("UI References")]
-    public TMP_Text dialogueText;
+    public GameObject root;
+    public TextMeshProUGUI dialogueText;
     public Transform choiceContainer;
-    public Button choiceButtonPrefab;
+    public GameObject choiceButtonPrefab;
 
-    void Awake()
+    private void Awake()
     {
         Instance = this;
-        gameObject.SetActive(false);
+        Hide();
     }
 
-    public void Show(string text, List<TwineChoice> choices)
+    public void ShowPassage(TwinePassage passage)
     {
-        dialogueText.text = text;
-        ClearChoices();
+        root.SetActive(true);
+        dialogueText.text = passage.cleanedText;
 
-        for (int i = 0; i < choices.Count; i++)
+        // Clear old buttons
+        foreach (Transform child in choiceContainer)
+            Destroy(child.gameObject);
+
+        // Create new choice buttons
+        foreach (var c in passage.choices)
         {
-            var index = i;
-            var button = Instantiate(choiceButtonPrefab, choiceContainer);
-
-            button.GetComponentInChildren<TMP_Text>().text = choices[i].label;
-
-            button.onClick.AddListener(() =>
+            var btnObj = Instantiate(choiceButtonPrefab, choiceContainer);
+            btnObj.GetComponentInChildren<TextMeshProUGUI>().text = c.text;
+            btnObj.GetComponent<Button>().onClick.AddListener(() =>
             {
-                TwineDialogueController.Instance.SelectChoice(index);
+                TwineDialogueController.Instance.Choose(c);
             });
         }
-
-        gameObject.SetActive(true);
     }
 
     public void Hide()
     {
-        ClearChoices();
-        gameObject.SetActive(false);
-    }
-
-    private void ClearChoices()
-    {
-        foreach (Transform child in choiceContainer)
-            Destroy(child.gameObject);
+        root.SetActive(false);
     }
 }

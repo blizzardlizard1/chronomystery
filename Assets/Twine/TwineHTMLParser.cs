@@ -1,86 +1,133 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Net;   // For HtmlDecode
+using UnityEngine;
 
-public static class TwineHTMLParser
+public class TwineHTMLParser
 {
-    public static Dictionary<string, TwinePassage> Parse(string html)
+    public Dictionary<string, TwinePassage> passages = new();
+    public string startPassageName;
+
+    public void LoadTwine(string html)
     {
-        var passages = new Dictionary<string, TwinePassage>();
+        passages.Clear();
+        startPassageName = null;
 
-        var passageRegex = new Regex(
-            "<tw-passagedata[^>]*name=\"([^\"]+)\"[^>]*>([\\s\\S]*?)</tw-passagedata>|" +
-            "<div[^>]*tiddler=\"([^\"]+)\"[^>]*>([\\s\\S]*?)</div>"
-        );
+        var storyMatch = Regex.Match(html,
+            @"<tw-storydata[^>]*startnode=""(\d+)""",
+            RegexOptions.IgnoreCase);
 
-        foreach (Match m in passageRegex.Matches(html))
+        if (!storyMatch.Success)
         {
-            string title = m.Groups[1].Success ? m.Groups[1].Value : m.Groups[3].Value;
-            string rawText = m.Groups[2].Success ? m.Groups[2].Value : m.Groups[4].Value;
-
-            var passage = new TwinePassage();
-            passage.title = title;
-
-            // Clean passage dialogue text
-            passage.text = CleanText(rawText);
-
-            // Extract choices
-            var linkRegex = new Regex("\\[\\[([^\\]]+?)(?:->([^\\]]+))?\\]\\]");
-            foreach (Match link in linkRegex.Matches(rawText))
-            {
-                string rawLabel  = link.Groups[1].Value;
-                string rawTarget = link.Groups[2].Success ? link.Groups[2].Value : rawLabel;
-
-                string cleanLabel = CleanChoice(rawLabel);
-
-                passage.choices.Add(new TwineChoice
-                {
-                    label = cleanLabel,   // ❤️ Cleaned!
-                    targetPassage = rawTarget
-                });
-            }
-
-            passages[title] = passage;
+            Debug.LogError("No startnode found.");
+            return;
         }
 
-        return passages;
+        string startPID = storyMatch.Groups[1].Value;
+
+        var matches = Regex.Matches(html,
+            @"<tw-passagedata[^>]*pid=""(\d+)""[^>]*name=""([^""]*)""[^>]*>([\s\S]*?)</tw-passagedata>",
+            RegexOptions.IgnoreCase);
+
+        foreach (Match m in matches)
+        {
+            var p = new TwinePassage
+            {
+                pid = m.Groups[1].Value,
+                name = CleanName(m.Groups[2].Value),
+                rawText = m.Groups[3].Value
+            };
+
+            passages[p.name] = p;
+
+            if (p.pid == startPID)
+                startPassageName = p.name;
+        }
+
+        foreach (var p in passages.Values)
+        {
+            p.cleanedText = CleanText(p.rawText);
+            p.choices = ExtractChoices(p.rawText);
+        }
     }
 
-    /// <summary>
-    /// Cleans Twine passage display text.
-    /// - HTML decode
-    /// - Remove [[links]]
-    /// - Remove HTML tags
-    /// - Trim whitespace
-    /// </summary>
-    private static string CleanText(string input)
+    private string CleanText(string raw)
     {
-        if (string.IsNullOrEmpty(input))
-            return "";
+        string t = raw;
 
-        string decoded = WebUtility.HtmlDecode(input);
-        decoded = Regex.Replace(decoded, "\\[\\[(.*?)\\]\\]", "");
-        decoded = Regex.Replace(decoded, "<.*?>", "");
+        t = Regex.Replace(t, @"\[\[[^\]]+\]\]", "");
+        t = t.Replace("&quot;", "\"")
+             .Replace("&#39;", "'")
+             .Replace("&amp;", "&");
 
-        return decoded.Trim();
+        t = Regex.Replace(t, "<.*?>", "");
+
+        return t.Trim();
     }
 
-    /// <summary>
-    /// Cleans Twine choice label text.
-    /// - HTML decode
-    /// - Remove HTML tags
-    /// - Trim whitespace
-    /// (Do NOT remove [[...]] since the label is already extracted)
-    /// </summary>
-    private static string CleanChoice(string input)
+    private List<TwineChoice> ExtractChoices(string raw)
     {
-        if (string.IsNullOrEmpty(input))
-            return "";
+        List<TwineChoice> list = new();
 
-        string decoded = WebUtility.HtmlDecode(input);
-        decoded = Regex.Replace(decoded, "<.*?>", "");
+        var matches = Regex.Matches(raw, @"\[\[([^\]]+)\]\]");
 
-        return decoded.Trim();
+        foreach (Match m in matches)
+        {
+            string content = m.Groups[1].Value;
+
+            string text;
+            string target;
+
+            if (content.Contains("|"))
+            {
+                var parts = content.Split('|');
+                text = CleanChoiceText(parts[0]);   // what player sees
+                target = CleanName(parts[1]);       // passage lookup key
+            }
+            else
+            {
+                text = CleanChoiceText(content);
+                target = CleanName(content);
+            }
+
+            list.Add(new TwineChoice
+            {
+                text = text,
+                targetPassageName = target
+            });
+        }
+
+        return list;
     }
+
+    private string CleanChoiceText(string raw)
+    {
+        string t = raw;
+
+        // Decode HTML entities
+        t = t.Replace("&quot;", "\"")
+             .Replace("&#39;", "'")
+             .Replace("&amp;", "&");
+
+        // Strip HTML tags
+        t = Regex.Replace(t, "<.*?>", "");
+
+        return t.Trim();
+    }
+
+    private string CleanName(string raw)
+    {
+        if (string.IsNullOrEmpty(raw))
+            return raw;
+
+        string t = raw;
+
+        t = t.Replace("&quot;", "\"")
+             .Replace("&#39;", "'")
+             .Replace("&amp;", "&");
+
+        return t.Trim();
+    }
+
+
+
 }
