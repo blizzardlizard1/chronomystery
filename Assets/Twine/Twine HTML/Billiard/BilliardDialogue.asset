@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: BilliardDialogue
   m_EditorClassIdentifier: 
   dialogues:
+  - htmlFile: {fileID: 4900000, guid: 89e40e74e06a82a4196e30259e80e100, type: 3}
+    requiredTag: 
+    itemsRequiredBeforeDialogue:
+    - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
+    itemsGivenToPlayer: []
+    itemsTakenFromPlayer: []
   - htmlFile: {fileID: 4900000, guid: 4a82e92835d8f534b954b061c7287c63, type: 3}
     requiredTag: Skeleton
     itemsRequiredBeforeDialogue: []
@@ -29,12 +35,6 @@ MonoBehaviour:
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
-    itemsTakenFromPlayer: []
-  - htmlFile: {fileID: 4900000, guid: 89e40e74e06a82a4196e30259e80e100, type: 3}
-    requiredTag: 
-    itemsRequiredBeforeDialogue:
-    - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
-    itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
   - htmlFile: {fileID: 4900000, guid: 99c46b8a4759cfa4daec6307dbfeb2c7, type: 3}
     requiredTag: 
