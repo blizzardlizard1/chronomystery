@@ -70,7 +70,7 @@ public class TwineDialogueController : MonoBehaviour
         {
             foreach (var item in entry.itemsTakenFromPlayer)
             {
-                if (inv.HasItem(item))
+                if (inv.HasItemName(item.itemName))
                 {
                     inv.RemoveItem(item);
                     Debug.Log("Removed: " + item.itemName);
