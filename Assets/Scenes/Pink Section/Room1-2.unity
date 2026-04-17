@@ -239,6 +239,14 @@ PrefabInstance:
       propertyPath: open
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: roomID
+      value: Hallway1-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: destinationScene
+      value: Hallway1-2
+      objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name
       value: Door (5)
@@ -1312,6 +1320,14 @@ PrefabInstance:
       propertyPath: open
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: roomID
+      value: Lobby1-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: destinationScene
+      value: Lobby
+      objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name
       value: Door (6)
@@ -1548,6 +1564,10 @@ PrefabInstance:
       propertyPath: open
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: destinationScene
+      value: Room1-1
+      objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name
       value: Door (3)
@@ -1625,6 +1645,14 @@ PrefabInstance:
       propertyPath: open
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: roomID
+      value: Room1-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: destinationScene
+      value: Room1-3
+      objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name
       value: Door (2)
@@ -1701,6 +1729,14 @@ PrefabInstance:
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: open
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: roomID
+      value: Yard1-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: destinationScene
+      value: Yard
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name

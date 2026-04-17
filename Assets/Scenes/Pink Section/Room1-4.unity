@@ -572,6 +572,14 @@ PrefabInstance:
       propertyPath: open
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: roomID
+      value: Lobby1-4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: destinationScene
+      value: Lobby
+      objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name
       value: Door (4)
@@ -2817,6 +2825,14 @@ PrefabInstance:
       propertyPath: open
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: roomID
+      value: Billiard3-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: destinationScene
+      value: Room3-2
+      objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name
       value: Door (2)
@@ -3294,6 +3310,14 @@ PrefabInstance:
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: open
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: roomID
+      value: Room1-4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: destinationScene
+      value: Room1-3
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name
