@@ -165,7 +165,7 @@ public class PlacementPoint : MonoBehaviour
     private void SpawnObject(ItemData item)
     {
         if (item?.worldPrefab != null)
-            _spawnedObject = Instantiate(item.worldPrefab, GetSurfacePosition(item), Quaternion.identity);
+            _spawnedObject = Instantiate(item.worldPrefab, GetSurfacePosition(item), item.worldPrefab.transform.rotation);
     }
 
     private void DestroyObject()

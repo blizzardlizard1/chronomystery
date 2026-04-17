@@ -674,8 +674,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: roomID
-      value: Lobby1-4
+      value: Lobby-Billiard
       objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: unlockItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 039f309592028b94b8e36d20e5173d74, type: 2}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: destinationScene
       value: Lobby
@@ -1322,7 +1326,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-246188
+  m_Name: pb_Mesh-447476
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2200,6 +2204,10 @@ PrefabInstance:
       propertyPath: roomID
       value: Billiard3-2
       objectReference: {fileID: 0}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: unlockItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 039f309592028b94b8e36d20e5173d74, type: 2}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: destinationScene
       value: Room3-2
@@ -3657,7 +3665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3285720798599956877
 Transform:
   m_ObjectHideFlags: 0

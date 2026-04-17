@@ -17,6 +17,7 @@ public class SceneStateManager : MonoBehaviour
 
     private HashSet<string> _destroyedObjects = new HashSet<string>();
     private HashSet<string> _spawnedObjects = new HashSet<string>();
+    private HashSet<string> _unlockedObjects = new HashSet<string>();
 
     void Awake() {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -37,6 +38,13 @@ public class SceneStateManager : MonoBehaviour
     public bool IsSpawned(string id) => _spawnedObjects.Contains(id);
     public HashSet<string> GetSpawnedSet() => new HashSet<string>(_spawnedObjects);
     public void SetSpawnedSet(HashSet<string> s) => _spawnedObjects = new HashSet<string>(s);
+
+    // --- Unlocked ---
+    public void MarkUnlocked(string id) => _unlockedObjects.Add(id);
+    public void UnmarkUnlocked(string id) => _unlockedObjects.Remove(id);
+    public bool IsUnlocked(string id) => _unlockedObjects.Contains(id);
+    public HashSet<string> GetUnlockedSet() => new HashSet<string>(_unlockedObjects);
+    public void SetUnlockedSet(HashSet<string> s) => _unlockedObjects = new HashSet<string>(s);
 
     // --- Live Registry ---
     private readonly Dictionary<string, ObjectSync> _registry = new();

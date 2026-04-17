@@ -28,9 +28,25 @@ public class ChangeRoom : MonoBehaviour
     //     }
     // }
 
-    void Start() {
+    void Start()
+    {
         doorOpen.SetActive(false);
         doorClose.SetActive(false);
+
+        // Restore persistent unlock state (shared across paired doors via roomID)
+        if (!string.IsNullOrEmpty(roomID))
+        {
+            var mgr = SceneStateManager.Instance;
+            if (mgr.IsUnlocked(roomID))
+            {
+                open = true;
+            }
+            else if (open)
+            {
+                // Unlocked by default in the Inspector — record it so the manager agrees
+                mgr.MarkUnlocked(roomID);
+            }
+        }
 
         UpdateDoor();
     }
@@ -82,17 +98,14 @@ public class ChangeRoom : MonoBehaviour
 
     void OpenDoor() {
         open = true;
+        if (!string.IsNullOrEmpty(roomID))
+            SceneStateManager.Instance.MarkUnlocked(roomID);
         UpdateDoor();
     }
 
-    void UpdateDoor() {
-        if (open)
-        {
-            doorOpen.SetActive(true);
-        }
-        else
-        {
-            doorClose.SetActive(true);
-        }
+    void UpdateDoor()
+    {
+        doorOpen.SetActive(open);
+        doorClose.SetActive(!open);
     }
 }
