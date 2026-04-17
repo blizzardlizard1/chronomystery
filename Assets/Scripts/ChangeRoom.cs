@@ -37,7 +37,8 @@ public class ChangeRoom : MonoBehaviour
 
     public void TryEntering() {
         if (open) {
-            StartCoroutine(ChangeRoomRoutine());
+            MirrorManager.TargetPortalID = roomID;
+            MirrorManager.Instance.StartCoroutine(ChangeRoomRoutine());
         }
         else {
             var inv = PlayerController.Instance.GetComponent<PlayerInventory>();
