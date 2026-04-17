@@ -87,5 +87,12 @@ public class TwineDialogueController : MonoBehaviour
                     Debug.Log("Given: " + item.itemName);
             }
         }
+        if (entry.destroyItself) {
+            var obj = gameObject.GetComponent<ObjectSync>();
+            if (obj) {
+                obj.DestroyPersistent();
+            }
+        }
+
     }
 }

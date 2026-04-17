@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 863506041949800569}
+  - component: {fileID: 7442870235169776481}
   m_Layer: 0
   m_Name: Bookshelf
   m_TagString: Untagged
@@ -35,6 +36,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &7442870235169776481
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49568763315622595}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.941534, z: 1.0442696}
+  m_Center: {x: 0, y: 1.0507689, z: -0.11869621}
 --- !u!1 &1978950159396092160
 GameObject:
   m_ObjectHideFlags: 0

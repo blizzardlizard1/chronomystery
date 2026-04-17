@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: Dirty socks
   icon: {fileID: 0}
   worldPrefab: {fileID: 3055975389485875036, guid: 0a79e33ae68a57a418bbf15ee7ec8989, type: 3}
-  placementOffset: 0
+  placementOffset: {x: 0, y: 0.5, z: 0}
+  dialogue: Pair of decrepit socks, centuries old. Biological hazard.

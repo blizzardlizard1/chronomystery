@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: Tools
   icon: {fileID: 0}
   worldPrefab: {fileID: 2210175259703654400, guid: 8cbf51261dcb08a4da9cce7e1e468e88, type: 3}
-  placementOffset: 0.3
+  placementOffset: {x: 0, y: 0, z: 0}
+  dialogue: Set of carpentry tools

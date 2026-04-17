@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: Pool Balls
   icon: {fileID: 0}
   worldPrefab: {fileID: 8477431159775361317, guid: 0feb2a9ef51d4ce47a6bcdfcd79ced88, type: 3}
-  placementOffset: 0
+  placementOffset: {x: 0, y: 0, z: 0}
+  dialogue: Set of pool balls.

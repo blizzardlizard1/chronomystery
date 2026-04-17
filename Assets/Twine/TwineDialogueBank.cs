@@ -19,6 +19,9 @@ public class TwineDialogueBank : ScriptableObject
 
         [Header("Costs")]
         public ItemData[] itemsTakenFromPlayer;
+
+        [Header("Destroys Itself")]
+        public bool destroyItself = false;
     }
 
     public Entry[] dialogues;

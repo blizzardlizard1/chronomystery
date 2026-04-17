@@ -876,11 +876,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: roomID
-      value: P-Yard
+      value: Yard1-2-Past
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: destinationScene
-      value: Past - Yard
+      value: Yard-Past
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name
@@ -1609,7 +1609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: destinationScene
-      value: Past-Hallway
+      value: Hallway-Past
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name

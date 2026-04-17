@@ -64,7 +64,7 @@ public class PlacementPoint : MonoBehaviour
 
         if (_placedItem != null)
         {
-            _interactable.supportedActions.Add(new ActionEntry { action = WheelAction.Top, name = "Pick Up" });
+            _interactable.supportedActions.Add(new ActionEntry { action = WheelAction.Top, name = "Pick Up", dialogue = _placedItem.dialogue });
             _interactable.supportedActions.Add(new ActionEntry { action = WheelAction.Bottom, name = "Place" });
             _interactable.onTopAction.AddListener(PickUp);
             _interactable.onBottomAction.AddListener(() => InventoryController.Instance.BeginPlacement(this));
@@ -165,7 +165,7 @@ public class PlacementPoint : MonoBehaviour
     private void SpawnObject(ItemData item)
     {
         if (item?.worldPrefab != null)
-            _spawnedObject = Instantiate(item.worldPrefab, GetSurfacePosition(item), item.worldPrefab.transform.rotation);
+            _spawnedObject = Instantiate(item.worldPrefab, GetSurfacePosition(item), item.worldPrefab.transform.localRotation);
     }
 
     private void DestroyObject()
@@ -179,6 +179,6 @@ public class PlacementPoint : MonoBehaviour
         float surfaceY = transform.position.y;
         if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, 20f, groundLayer))
             surfaceY = hit.point.y;
-        return new Vector3(transform.position.x, surfaceY + item.placementOffset, transform.position.z);
+        return new Vector3(transform.position.x + item.placementOffset.x, surfaceY + item.placementOffset.y, transform.position.z + item.placementOffset.z);
     }
 }

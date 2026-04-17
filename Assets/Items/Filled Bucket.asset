@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: Filled Bucket
   icon: {fileID: 0}
   worldPrefab: {fileID: 8885497861645329222, guid: 52c9cdc5dbcaf90448829f79d56d04b2, type: 3}
-  placementOffset: 0.2
+  placementOffset: {x: 0, y: 0, z: 0}
+  dialogue: Full bucket. Yay

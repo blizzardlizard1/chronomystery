@@ -17,28 +17,35 @@ MonoBehaviour:
     requiredTag: 
     itemsRequiredBeforeDialogue:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
-    itemsGivenToPlayer: []
-    itemsTakenFromPlayer: []
+    itemsGivenToPlayer:
+    - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
+    - {fileID: 11400000, guid: 039f309592028b94b8e36d20e5173d74, type: 2}
+    itemsTakenFromPlayer:
+    - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 4a82e92835d8f534b954b061c7287c63, type: 3}
     requiredTag: Skeleton
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 8a4ecb36a1fbfea49848d95227f84bde, type: 3}
     requiredTag: Balls
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
     itemsTakenFromPlayer: []
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 5a6aa0bb200ce3046a7b34a077940400, type: 3}
     requiredTag: Dirty
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
     itemsTakenFromPlayer: []
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 99c46b8a4759cfa4daec6307dbfeb2c7, type: 3}
     requiredTag: 
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
-    itemsTakenFromPlayer:
-    - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
+    itemsTakenFromPlayer: []
+    destroyItself: 0

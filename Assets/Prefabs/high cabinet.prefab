@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1503746614844702672}
   - component: {fileID: 2554026979234721909}
   - component: {fileID: 330255121833018559}
+  - component: {fileID: 8927322360683402392}
   m_Layer: 0
   m_Name: high cabinet
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8927322360683402392
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275920043478082922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.63964534, y: 0.36318234, z: 0.954649}
+  m_Center: {x: -0.0000025480986, y: -0.0011924581, z: 0.47732252}

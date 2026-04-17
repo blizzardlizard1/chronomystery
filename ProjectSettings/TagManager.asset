@@ -11,6 +11,8 @@ TagManager:
   - Dirty
   - Skeleton
   - Balls
+  - Clock
+  - Tape
   layers:
   - Default
   - TransparentFX

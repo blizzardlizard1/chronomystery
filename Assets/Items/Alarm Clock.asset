@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c329cb880d1309b41be16d968cd07d1f, type: 3}
+  m_Name: Alarm Clock
+  m_EditorClassIdentifier: 
+  itemName: Clock
+  icon: {fileID: 0}
+  worldPrefab: {fileID: 808713523919247086, guid: 4fb9f61b2cd70af498ef6d38caf49b5b, type: 3}
+  placementOffset: {x: 0, y: 0, z: 0}
+  dialogue: Screaming alarm clock
