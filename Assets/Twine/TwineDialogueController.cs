@@ -70,10 +70,10 @@ public class TwineDialogueController : MonoBehaviour
         {
             foreach (var item in entry.itemsTakenFromPlayer)
             {
-                if (inv.HasItemName(item.itemName))
+                if (PlayerInventory.Instance.ContainsItemName(item.itemName))
                 {
-                    inv.RemoveItem(item);
-                    Debug.Log("Removed: " + item.itemName);
+                    PlayerInventory.Instance.RemoveItem(item);
+                    Debug.Log("[Dialogue] Removed item: " + item.itemName);
                 }
             }
         }
@@ -87,9 +87,11 @@ public class TwineDialogueController : MonoBehaviour
                     Debug.Log("Given: " + item.itemName);
             }
         }
-        if (entry.destroyItself) {
+        if (entry.destroyItself)
+        {
             var obj = gameObject.GetComponent<ObjectSync>();
-            if (obj) {
+            if (obj)
+            {
                 obj.DestroyPersistent();
             }
         }

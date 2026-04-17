@@ -42,8 +42,16 @@ public class PlayerInventory : MonoBehaviour
 
     public void RemoveItem(ItemData item)
     {
-        int slot = slots.IndexOf(item);
-        if (slot >= 0) RemoveItem(slot);
+        if (item == null) return;
+
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i] != null && slots[i].itemName == item.itemName)
+            {
+                RemoveItem(i);
+                return;
+            }
+        }
     }
 
     public void RemoveItem(int slotIndex)
@@ -60,5 +68,14 @@ public class PlayerInventory : MonoBehaviour
     public bool HasItemName(string itemName)
     {
         return slots.Exists(slot => slot != null && slot.itemName == itemName);
+    }
+
+    public bool ContainsItemName(string name)
+    {
+        foreach (var slot in slots)
+            if (slot != null && slot.itemName == name)
+                return true;
+
+        return false;
     }
 }
