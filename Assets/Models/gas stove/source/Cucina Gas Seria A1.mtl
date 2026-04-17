@@ -1,0 +1,18 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 04.10.2017 10:28:21
+
+newmtl end_CucinaGas_A1
+	Ns 9.999999
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588235 0.588235 0.588235
+	Kd 0.588235 0.588235 0.588235
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka E:\Cad\Cucina Gas Seria\max1\Cucina Gas Seria\CucinaGas_A001_albedo.png
+	map_Kd E:\Cad\Cucina Gas Seria\max1\Cucina Gas Seria\CucinaGas_A001_albedo.png
+	map_bump E:\Cad\Cucina Gas Seria\max1\Cucina Gas Seria\CucinaGas_A001_normal.png
+	bump E:\Cad\Cucina Gas Seria\max1\Cucina Gas Seria\CucinaGas_A001_normal.png
