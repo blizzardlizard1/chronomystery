@@ -13,6 +13,8 @@ TagManager:
   - Balls
   - Clock
   - Tape
+  - Clock100
+  - Rest
   layers:
   - Default
   - TransparentFX

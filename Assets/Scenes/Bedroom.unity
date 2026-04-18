@@ -1350,6 +1350,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3380319200690909360, guid: d49f286690dc09043ba234557a08ba44, type: 3}
+      propertyPath: supportedActions.Array.data[0].destroyRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380319200690909360, guid: d49f286690dc09043ba234557a08ba44, type: 3}
       propertyPath: onRightAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 761496590}
