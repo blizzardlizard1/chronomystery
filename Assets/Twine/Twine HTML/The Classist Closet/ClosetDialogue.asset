@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: ClosetDialogue
   m_EditorClassIdentifier: 
   dialogues:
+  - htmlFile: {fileID: 4900000, guid: a837f62661ed1504eaa3459ae31baeff, type: 3}
+    requiredTag: Communist
+    itemsRequiredBeforeDialogue: []
+    itemsGivenToPlayer: []
+    itemsTakenFromPlayer: []
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: a2248a874c344b94980064f0bb5923e0, type: 3}
     requiredTag: 
     itemsRequiredBeforeDialogue: []
