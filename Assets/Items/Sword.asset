@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Sword
   icon: {fileID: 0}
   worldPrefab: {fileID: 4947193084939442209, guid: 8466e4ad9f4403d4796f031701cb6b0a, type: 3}
-  placementOffset: {x: 0, y: 0, z: 0}
+  placementOffset: {x: 0, y: 1, z: 0}
   dialogue: A slightly fancy sword
