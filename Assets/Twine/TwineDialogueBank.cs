@@ -7,6 +7,7 @@ public class TwineDialogueBank : ScriptableObject
     public class Entry
     {
         public TextAsset htmlFile;
+        public TwineAudioMap audioMap;
 
         [Header("Scene Conditions")]
         public string requiredTag;
@@ -20,11 +21,10 @@ public class TwineDialogueBank : ScriptableObject
         [Header("Costs")]
         public ItemData[] itemsTakenFromPlayer;
 
-        [Header("Destroys Itself")]
-        public bool destroyItself = false;
-
         [Header("Final State")]
         public bool isFinalEntry;
+
+        public bool destroyItself;
     }
 
     public Entry[] dialogues;

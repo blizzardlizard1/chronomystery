@@ -10,12 +10,19 @@ public class TwineDialogueController : MonoBehaviour
     public TwineDialogueBank.Entry activeEntry;
 
     public TwineInteractable activeInteractable;
+    
+    private AudioSource audioSource;
+
+    public TwineAudioMap currentAudioMap;
 
     private void Awake()
     {
         Instance = this;
-    }
 
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+    }
     private void OnDestroy()
     {
         if (Instance == this)
@@ -56,8 +63,7 @@ public class TwineDialogueController : MonoBehaviour
 
         DialogueUI.Instance.ShowPassage(p);
 
-        if (p.voiceClip != null && Camera.main != null)
-            AudioSource.PlayClipAtPoint(p.voiceClip, Camera.main.transform.position);
+        PlayVoiceForPassage(p);
     }
 
     public void Choose(TwineChoice c)
@@ -134,6 +140,7 @@ public class TwineDialogueController : MonoBehaviour
 
         activeEntry = null;
         currentPassage = null;
+        currentAudioMap = null;
     }
 
     private bool IsEndDialogueChoice(string target)
@@ -150,5 +157,23 @@ public class TwineDialogueController : MonoBehaviour
                                .Trim();
 
         return normalized == "end dialogue";
+    }
+
+    private void PlayVoiceForPassage(TwinePassage passage)
+    {
+        if (audioSource == null)
+            return;
+
+        audioSource.Stop();
+
+        if (currentAudioMap == null || passage == null)
+            return;
+
+        AudioClip clip = currentAudioMap.GetClip(passage.pid);
+        if (clip == null)
+            return;
+
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 }

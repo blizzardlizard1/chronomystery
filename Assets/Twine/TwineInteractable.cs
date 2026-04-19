@@ -93,8 +93,14 @@ public class TwineInteractable : MonoBehaviour
 
     private void Load(TwineDialogueBank.Entry entry)
     {
+        if (TwineDialogueController.Instance == null)
+        {
+            Debug.LogWarning($"[{name}] No dialogue controller available.");
+            return;
+        }
+
         TwineDialogueController.Instance.activeEntry = entry;
-        TwineDialogueController.Instance.activeInteractable = this;
+        TwineDialogueController.Instance.currentAudioMap = entry.audioMap;
         TwineDialogueController.Instance.LoadTwine(entry.htmlFile.text);
         TwineDialogueController.Instance.StartDialogue();
     }
