@@ -12,4 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfe8f8478260be438148daf61dbb233, type: 3}
   m_Name: Bookshelf Audio
   m_EditorClassIdentifier: 
-  entries: []
+  entries:
+  - passagePID: 2
+    clip: {fileID: 8300000, guid: 97ba80d7327a3c44ea41439bbb973ec2, type: 3}
+  - passagePID: 3
+    clip: {fileID: 8300000, guid: 4a00ac21e9bb12f40b4042395bb0a189, type: 3}
+  - passagePID: 4
+    clip: {fileID: 8300000, guid: 8dc6ef2ef38f9dc44a4963bb0d1b259d, type: 3}
+  - passagePID: 5
+    clip: {fileID: 8300000, guid: ee85c2f36b0780449835c9006cb12b93, type: 3}
+  - passagePID: 6
+    clip: {fileID: 8300000, guid: 675179804526eb84d913b1ef616189c1, type: 3}
+  - passagePID: 7
+    clip: {fileID: 8300000, guid: ced13444a75f85e4393e5f8c5fd29660, type: 3}
+  - passagePID: 9
+    clip: {fileID: 8300000, guid: c256895679f120045afda79a65d4e253, type: 3}
+  - passagePID: 10
+    clip: {fileID: 8300000, guid: 890defa05844ee348b0d6b1f469f675f, type: 3}
+  - passagePID: 11
+    clip: {fileID: 8300000, guid: 92cbb68821dae4d48ac8c819597dd328, type: 3}
+  - passagePID: 12
+    clip: {fileID: 8300000, guid: d13abe67e5d67744bafcd3130e9c2399, type: 3}
+  - passagePID: 13
+    clip: {fileID: 8300000, guid: c5a4ca5439670b141b5715663f32b4d1, type: 3}
+  - passagePID: 14
+    clip: {fileID: 8300000, guid: a0b2f0bbab8ba1541a874db23cb4ba34, type: 3}
+  - passagePID: 15
+    clip: {fileID: 8300000, guid: c256895679f120045afda79a65d4e253, type: 3}
+  - passagePID: 16
+    clip: {fileID: 8300000, guid: 0bcc57d7337c85347bd1b100907a071b, type: 3}
+  - passagePID: 17
+    clip: {fileID: 8300000, guid: 0bcc57d7337c85347bd1b100907a071b, type: 3}
+  - passagePID: 18
+    clip: {fileID: 8300000, guid: 0e78b2a112dbb70488747db0e4d20fa2, type: 3}
