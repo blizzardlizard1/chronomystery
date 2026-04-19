@@ -6,17 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 4481d63921273c54080dca5f7a6a7083
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 0eec90eb1fe86434eb9922eaaa324c41
+  - enabled: 1
     path: Assets/Scenes/Pink Section/Present - Manor.unity
     guid: 2a0522e3c5fd9c44ab80959505ea9a70
   - enabled: 1
     path: Assets/Scenes/Pink Section/Past - Manor.unity
     guid: 6af009689987aa64db224fe4214e283c
-  - enabled: 1
-    path: Assets/Scenes/TestScenes/TimeTest.unity
-    guid: 8bfd4e88b0416c543bf33f57439317a0
-  - enabled: 1
-    path: Assets/Scenes/TestScenes/Past-TimeTest.unity
-    guid: d4e69491536167049a7ebbfc727b9080
   - enabled: 1
     path: Assets/Scenes/Pink Section/Room1-2.unity
     guid: 7bcf28371fcdaf64ab23f7d36bc9f778
@@ -53,9 +53,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hallway.unity
     guid: d26fd82c843459f4e862ddbed4fc312f
-  - enabled: 1
-    path: Assets/Scenes/Intro.unity
-    guid: 0eec90eb1fe86434eb9922eaaa324c41
   - enabled: 1
     path: Assets/Scenes/Kitchen-Past.unity
     guid: 332f983e56128d342835eee1e5516b77
@@ -104,4 +101,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Yard.unity
     guid: 108dcd28c9100e949a35f40bdde92172
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: a4cbcb8febb8c534c822d2d0a8485046
   m_configObjects: {}

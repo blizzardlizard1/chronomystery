@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TwineDialogueController : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class TwineDialogueController : MonoBehaviour
     private AudioSource audioSource;
 
     public TwineAudioMap currentAudioMap;
-
+    public UnityEvent onInteract;
     private void Awake()
     {
         Instance = this;
@@ -144,6 +145,11 @@ public class TwineDialogueController : MonoBehaviour
         // Optional changing tag for sequential entries
         if (!string.IsNullOrEmpty(entry.changeTag) && gameManager) {
             gameManager.tag = entry.changeTag;
+        }
+
+        // Optional: Do function if has one
+        if (entry.onInteract) {
+            onInteract?.Invoke();
         }
 
         // Final entry: destroy this scene-local controller so no more dialogue can happen

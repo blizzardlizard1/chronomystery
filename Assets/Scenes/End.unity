@@ -181,32 +181,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Greetings,\r\n\r\nI regret to inform you of the passing of your fifth
-    cousin twice-removed, Paulina von Spiegel. According to my highly precise research,
-    you are her closest living blood relative. This means you are heir to the Spiegel
-    family fortune, which, after my fee, includes 47 dollars, 32 cents, a beautifully
-    handcrafted looking-glass, and a 200-acre estate in northern Maine.\r\n\r\nYour
-    and mistress Paulina\u2019s shared ancestor, Bertrand von Spiegel, was a renowned
-    17th-century mirror-maker from Europe. In the latter half of his life, Bertrand
-    moved to a remote spot in the New World, and built the manor that still stands
-    to this day. Herr von Spiegel\u2019s work was highly sought after. There is a
-    plethora of myths and rumors surrounding his mirrors, but I assure you these
-    are only fables and superstitions. Bertrand amassed a great fortune, but ever
-    since he was allegedly murdered by his son, the family\u2019s had nothing but
-    bad luck. Hence, you are reading this letter.\r\n\r\nI was in contact with mistress
-    von Spiegel shortly before her death, and she made it absolutely clear that the
-    Spiegel Manor must pass to you. The manor contains over 20 original creations
-    by Master von Spiegel himself, including the Golden Masterpiece, Bertrand\u2019s
-    greatest and most sought-after work. Unfortunately, the Masterpiece was shattered
-    into many pieces, which are now scattered over the estate. The previous owners
-    of the estate have been very stringent about visitors, so the building may be
-    in poor condition. \r\n\r\nMistress von Spiegel bade me tell you this message
-    exactly: \u201CFind the paths in the mirrors. All mirrors are gates to past and
-    future. The truth is in there. Reassemble the Masterpiece. Find the truth. Beware
-    the ghosts behind and ahead.\u201D\r\n\r\nThe groundskeeper, Karlov, will meet
-    you in the vestibule. He will pass you the original deed to the property, as
-    well as the master\u2019s keyring to all the doors in the building. I wish you
-    well in preserving this estate.\r\n\r\nYour faithfully,\r\nXavier Position, Esq.\r\n"
+  m_text: 'This is the end of the Demo, thanks for playing!
+
+
+    Developed by:
+
+
+    Jaylen
+    Zeng
+
+    Artem Sereda
+
+    Abdi Mohamed
+
+    Haozhou ''Howzy'' Zeng'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -233,14 +221,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 55.58
+  m_fontSizeBase: 55.58
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -413,8 +401,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.8462, y: -3.5197}
-  m_SizeDelta: {x: 1956.1101, y: 1113.7703}
+  m_AnchoredPosition: {x: 2.4554, y: -1.2418}
+  m_SizeDelta: {x: 1970.3394, y: 1125.3235}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1097229609
 MonoBehaviour:

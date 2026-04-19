@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Twine/Dialogue Bank")]
 public class TwineDialogueBank : ScriptableObject
@@ -27,6 +28,8 @@ public class TwineDialogueBank : ScriptableObject
 
         public bool destroyItself;
         public String changeTag;
+        public bool onInteract;
+
     }
 
     public Entry[] dialogues;

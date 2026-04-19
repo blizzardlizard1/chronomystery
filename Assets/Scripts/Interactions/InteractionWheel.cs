@@ -102,7 +102,6 @@ public class InteractionWheel : MonoBehaviour
         // Confirm
         if (selected >= 0 && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("hi");
             var entry = target.supportedActions.FirstOrDefault(e => e.action == (WheelAction)selected);
 
             if (!string.IsNullOrEmpty(entry.dialogue))
