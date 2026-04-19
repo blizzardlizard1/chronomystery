@@ -1906,6 +1906,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7402734665242452913, guid: 7b192966a2942934c9436475d1122972, type: 3}
+      propertyPath: m_TagString
+      value: ZeroMirrorShard
+      objectReference: {fileID: 0}
     - target: {fileID: 7402734665242452915, guid: 7b192966a2942934c9436475d1122972, type: 3}
       propertyPath: m_RootOrder
       value: 9

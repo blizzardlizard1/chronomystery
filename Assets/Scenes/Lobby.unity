@@ -1980,7 +1980,7 @@ PrefabInstance:
     - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
       propertyPath: preplacedItem
       value: 
-      objectReference: {fileID: 11400000, guid: 94d9cb5bb68187e48a0c27d4e1169ca0, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
       propertyPath: rules.Array.size
       value: 2
@@ -2559,7 +2559,7 @@ PrefabInstance:
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: unlockItem
       value: 
-      objectReference: {fileID: 11400000, guid: 039f309592028b94b8e36d20e5173d74, type: 2}
+      objectReference: {fileID: 11400000, guid: bbc92441f094e5d4ca0bee83b085aa49, type: 2}
     - target: {fileID: 6932847774201882311, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: m_Name
       value: Door (8)

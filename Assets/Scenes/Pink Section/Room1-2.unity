@@ -1622,7 +1622,7 @@ PrefabInstance:
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: unlockItem
       value: 
-      objectReference: {fileID: 11400000, guid: 039f309592028b94b8e36d20e5173d74, type: 2}
+      objectReference: {fileID: 11400000, guid: bbc92441f094e5d4ca0bee83b085aa49, type: 2}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: destinationScene
       value: Lobby
