@@ -19374,7 +19374,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-933242
+  m_Name: pb_Mesh-954678
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20328,7 +20328,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh218488
+  m_Name: pb_Mesh281022
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20926,7 +20926,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh218510
+  m_Name: pb_Mesh281050
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21225,7 +21225,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh218622
+  m_Name: pb_Mesh281148
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21409,7 +21409,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh218600
+  m_Name: pb_Mesh281126
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22194,6 +22194,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
+      propertyPath: preplacedItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b08597d3ddadee41ac0afdd3c0c0668, type: 2}
+    - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
+      propertyPath: rules.Array.data[0].presentItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3380319200690909362, guid: d49f286690dc09043ba234557a08ba44, type: 3}
       propertyPath: m_Name
       value: Quad
@@ -22565,7 +22573,7 @@ MonoBehaviour:
   disabled: {r: 0.3, g: 0.3, b: 0.3, a: 0.4}
   highlightBrightness: 1.3
   dimAmount: 0.6
-  deadzone: 0.4
+  isOpen: 0
 --- !u!1 &7048641184328698216
 GameObject:
   m_ObjectHideFlags: 0
@@ -22670,10 +22678,12 @@ MonoBehaviour:
     requiredItem: {fileID: 0}
     dialogue: "Some rusted carpentry tools\u2026 Looks like someone forgot to do
       maintenance."
+    destroyRequired: 0
   - action: 1
     name: Pick Up
     requiredItem: {fileID: 0}
     dialogue: I'm sure this will come in handy.
+    destroyRequired: 0
   onTopAction:
     m_PersistentCalls:
       m_Calls: []

@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Closet Remains
   icon: {fileID: 0}
   worldPrefab: {fileID: 1493958779012120596, guid: b9de24523a11d714db3851b5f0f9d527, type: 3}
-  placementOffset: {x: 0, y: 0, z: 0}
+  placementOffset: {x: 0, y: 0.1, z: 0}
   dialogue: So weird...

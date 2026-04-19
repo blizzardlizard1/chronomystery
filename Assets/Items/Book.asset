@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: "Karl Marx\u2019s Das Kapital"
   icon: {fileID: 0}
   worldPrefab: {fileID: 3967619349741681307, guid: bc4c4aee90ac85b4b940283e9a7932f5, type: 3}
-  placementOffset: {x: 0, y: 0, z: 0}
+  placementOffset: {x: 0, y: 0.1, z: 0}
   dialogue: Simple book with red cover

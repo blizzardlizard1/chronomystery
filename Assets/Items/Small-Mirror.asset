@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Small Mirror
   icon: {fileID: 0}
   worldPrefab: {fileID: 5884295436594883959, guid: 0a870a5e6deff4e41989b4cb78018d56, type: 3}
-  placementOffset: {x: 0, y: 0, z: 0}
+  placementOffset: {x: 0, y: 0.5, z: 0}
   dialogue: Small mirror

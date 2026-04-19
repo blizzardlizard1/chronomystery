@@ -16,4 +16,4 @@ MonoBehaviour:
   icon: {fileID: 0}
   worldPrefab: {fileID: 5800520388488569545, guid: e918ac69353fce744bdafe7adaea564a, type: 3}
   placementOffset: {x: 0, y: 0, z: 0}
-  dialogue: Don't want to forget that!
+  dialogue: Key given to me by the billiard table.

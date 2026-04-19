@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Skeleton
   icon: {fileID: 0}
   worldPrefab: {fileID: 8494245326914002501, guid: daf8e2b19b5acef4491e199706f97ad4, type: 3}
-  placementOffset: {x: 0, y: 0, z: 0}
+  placementOffset: {x: 0, y: 0.6, z: 0}
   dialogue: Skeleton, decomposing. Once a thief.

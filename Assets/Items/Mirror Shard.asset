@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Mirror Shard
   icon: {fileID: 0}
   worldPrefab: {fileID: 3972525584437200239, guid: 41e26ab0e0dd6694fb2c6b26161f327e, type: 3}
-  placementOffset: {x: 0, y: 0, z: 0}
+  placementOffset: {x: -0.2, y: -0.3, z: -0.2}
   dialogue: 

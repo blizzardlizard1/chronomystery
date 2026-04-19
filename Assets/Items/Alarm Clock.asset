@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Clock
   icon: {fileID: 0}
   worldPrefab: {fileID: 808713523919247086, guid: 4fb9f61b2cd70af498ef6d38caf49b5b, type: 3}
-  placementOffset: {x: 0, y: 0, z: 0}
+  placementOffset: {x: 0, y: 0.1, z: 0}
   dialogue: So loud...
