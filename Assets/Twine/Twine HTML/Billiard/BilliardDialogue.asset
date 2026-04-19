@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - htmlFile: {fileID: 4900000, guid: 89e40e74e06a82a4196e30259e80e100, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: 
     itemsRequiredBeforeDialogue:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
@@ -22,35 +23,39 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 039f309592028b94b8e36d20e5173d74, type: 2}
     itemsTakenFromPlayer:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
-    destroyItself: 0
     isFinalEntry: 1
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 4a82e92835d8f534b954b061c7287c63, type: 3}
+    audioMap: {fileID: 11400000, guid: 8e45888e612caf742bfb82524c126d45, type: 2}
     requiredTag: Skeleton
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 0
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 8a4ecb36a1fbfea49848d95227f84bde, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: Balls
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 0
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 5a6aa0bb200ce3046a7b34a077940400, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: Dirty
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 0
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 99c46b8a4759cfa4daec6307dbfeb2c7, type: 3}
+    audioMap: {fileID: 11400000, guid: 0805931ab59281440b47f4c526ac2103, type: 2}
     requiredTag: 
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 0
+    destroyItself: 0
