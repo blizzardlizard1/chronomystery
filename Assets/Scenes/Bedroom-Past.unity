@@ -1340,11 +1340,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
+      propertyPath: rules.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
       propertyPath: rules.Array.data[0].item
       value: 
       objectReference: {fileID: 11400000, guid: 1f006e06243d5eb4fbc8cbbb438603ff, type: 2}
     - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
+      propertyPath: rules.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b08597d3ddadee41ac0afdd3c0c0668, type: 2}
+    - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
       propertyPath: rules.Array.data[0].idsToReveal.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
+      propertyPath: rules.Array.data[1].idsToReveal.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
@@ -1354,6 +1366,10 @@ PrefabInstance:
     - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
       propertyPath: rules.Array.data[0].idsToReveal.Array.data[0]
       value: Flags
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
+      propertyPath: rules.Array.data[1].idsToReveal.Array.data[0]
+      value: Crown
       objectReference: {fileID: 0}
     - target: {fileID: 3380319200690909361, guid: d49f286690dc09043ba234557a08ba44, type: 3}
       propertyPath: rules.Array.data[0].idsToDestroy.Array.data[0]
