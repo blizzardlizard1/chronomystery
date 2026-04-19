@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - htmlFile: {fileID: 4900000, guid: 6e5768b6b95356b458044a0bc04c00f4, type: 3}
+    audioMap: {fileID: 11400000, guid: 9ff79a6a9b7932642bc508005f085f1b, type: 2}
     requiredTag: 
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer:
     - {fileID: 11400000, guid: 7b9e7655b47ee9546a7f0dc17f378ed9, type: 2}
     itemsTakenFromPlayer: []
+    isFinalEntry: 0
     destroyItself: 1
+    changeTag: 

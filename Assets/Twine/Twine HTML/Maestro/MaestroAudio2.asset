@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfe8f8478260be438148daf61dbb233, type: 3}
+  m_Name: MaestroAudio2
+  m_EditorClassIdentifier: 
+  entries:
+  - passagePID: 1
+    clip: {fileID: 8300000, guid: 2605eb2a82b819f459a708a311ebd2ca, type: 3}
+  - passagePID: 2
+    clip: {fileID: 8300000, guid: 541da0c4c117350408993ceca1db74a0, type: 3}
+  - passagePID: 3
+    clip: {fileID: 8300000, guid: 4ffb3398de3b2334caf164fadc1c1c1b, type: 3}
+  - passagePID: 5
+    clip: {fileID: 8300000, guid: 2c463ee5619cfb748966183b43d25a3a, type: 3}
+  - passagePID: 7
+    clip: {fileID: 8300000, guid: dd9a873e67e53d545b7549f80883fcdc, type: 3}
+  - passagePID: 8
+    clip: {fileID: 8300000, guid: 3ac6bd11d7e6e0741a7bf0b2936f0288, type: 3}
+  - passagePID: 9
+    clip: {fileID: 8300000, guid: 06d88853c0722994e8fa0b7f1ebd6455, type: 3}

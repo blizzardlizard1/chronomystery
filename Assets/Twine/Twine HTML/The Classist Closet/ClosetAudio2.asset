@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfe8f8478260be438148daf61dbb233, type: 3}
+  m_Name: ClosetAudio2
+  m_EditorClassIdentifier: 
+  entries:
+  - passagePID: 1
+    clip: {fileID: 8300000, guid: f09a2ce615ad60a478ac24103b8263e5, type: 3}
+  - passagePID: 2
+    clip: {fileID: 8300000, guid: 2d45c6888d31f454da6021e30dffadff, type: 3}
+  - passagePID: 3
+    clip: {fileID: 8300000, guid: b354b1e8fe270ac4abd0e54b1bdc3a00, type: 3}
+  - passagePID: 4
+    clip: {fileID: 8300000, guid: d235d28077ac8804b8e692982cdb3758, type: 3}
+  - passagePID: 5
+    clip: {fileID: 8300000, guid: 5518633e683b7374c8bb90153a1a22c8, type: 3}
+  - passagePID: 6
+    clip: {fileID: 8300000, guid: a039bcab7eb0ca64c8d406e2db241b17, type: 3}
+  - passagePID: 7
+    clip: {fileID: 8300000, guid: 8f372e4ed69a01f4496561376e1229db, type: 3}

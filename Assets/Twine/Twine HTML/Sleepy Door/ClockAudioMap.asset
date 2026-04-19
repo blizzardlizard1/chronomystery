@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfe8f8478260be438148daf61dbb233, type: 3}
+  m_Name: ClockAudioMap
+  m_EditorClassIdentifier: 
+  entries:
+  - passagePID: 1
+    clip: {fileID: 8300000, guid: 06540d9018160a04fa2346412e2943e2, type: 3}
+  - passagePID: 2
+    clip: {fileID: 8300000, guid: 31beb397c43752e45894746f9ca2d007, type: 3}
+  - passagePID: 3
+    clip: {fileID: 8300000, guid: 3cf2b19ca84e67040b719972b8b3bb15, type: 3}
+  - passagePID: 4
+    clip: {fileID: 8300000, guid: 6bdacd3841a618e4291506e3d0c0273a, type: 3}
+  - passagePID: 5
+    clip: {fileID: 8300000, guid: d1f8c4de9f1bef840a10dcf2b5aee520, type: 3}
+  - passagePID: 7
+    clip: {fileID: 8300000, guid: 00b47dba99aff18469e83988811811ad, type: 3}
+  - passagePID: 8
+    clip: {fileID: 8300000, guid: 16dec919bd5c0d245a7e93389cc8d2f9, type: 3}
+  - passagePID: 9
+    clip: {fileID: 8300000, guid: af7f23540c95d5240bf481bd9788b1e6, type: 3}
+  - passagePID: 11
+    clip: {fileID: 8300000, guid: 2e37fe33760420449850043b93fd4258, type: 3}
+  - passagePID: 12
+    clip: {fileID: 8300000, guid: b5626003fa749ff4b823f63dfdea53f5, type: 3}
+  - passagePID: 13
+    clip: {fileID: 8300000, guid: 27221308e46943a408f71b73c2f3892d, type: 3}
+  - passagePID: 14
+    clip: {fileID: 8300000, guid: a175af0f57e0e1d4983c03df59b4d824, type: 3}
+  - passagePID: 15
+    clip: {fileID: 8300000, guid: 6aa8fbfb17c5cad49b68c11e05b3178c, type: 3}

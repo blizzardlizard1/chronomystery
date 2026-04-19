@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfe8f8478260be438148daf61dbb233, type: 3}
+  m_Name: MaestroAudioInit
+  m_EditorClassIdentifier: 
+  entries:
+  - passagePID: 1
+    clip: {fileID: 8300000, guid: 888e05c3c357a5a428bc2f59ed6eafad, type: 3}
+  - passagePID: 2
+    clip: {fileID: 8300000, guid: 1a1e3f10133b0c1428182043f0bad184, type: 3}
+  - passagePID: 3
+    clip: {fileID: 8300000, guid: a986dd1442cd51a4c843e2a970bd6787, type: 3}
+  - passagePID: 4
+    clip: {fileID: 8300000, guid: 4730d38a7b758164fa49ed4d9cb4fc39, type: 3}
+  - passagePID: 5
+    clip: {fileID: 8300000, guid: d655017d9ca54a84fb4f58d69b13f486, type: 3}
+  - passagePID: 7
+    clip: {fileID: 8300000, guid: c6362d3b460cb514591199dbe6036459, type: 3}
+  - passagePID: 8
+    clip: {fileID: 8300000, guid: 52c6cda940c25bc4d8f540874b12b837, type: 3}
+  - passagePID: 9
+    clip: {fileID: 8300000, guid: 7f46b8d4cfb6f644ea8be7850224b4b3, type: 3}
+  - passagePID: 10
+    clip: {fileID: 8300000, guid: 0c42d0d32fbd2e6408b9b62ac9c9b41d, type: 3}
+  - passagePID: 11
+    clip: {fileID: 8300000, guid: fbbe5f1505bee1d46b38f1991ffb8057, type: 3}
+  - passagePID: 12
+    clip: {fileID: 8300000, guid: c6f71190d503a3a44a50d6df276d8b1e, type: 3}
+  - passagePID: 13
+    clip: {fileID: 8300000, guid: 87aa9ba97ffd63a4ab3c4b98aec096f0, type: 3}
+  - passagePID: 14
+    clip: {fileID: 8300000, guid: 77d01572bb2e8fb478099d9358664a4b, type: 3}
+  - passagePID: 15
+    clip: {fileID: 8300000, guid: 099a8b132aba6f4469e666bfed198d4b, type: 3}
