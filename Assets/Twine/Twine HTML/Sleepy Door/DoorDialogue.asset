@@ -14,23 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - htmlFile: {fileID: 4900000, guid: 2a8737547ee22a543a0692a5cf06b2d1, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: 
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 0
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: b6f2c8c4e8c01f34c82708dab5a9c0c9, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: Clock100
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 1
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: ac19a3c9f044ead4794ebb0dd7ff6214, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: Rest
     itemsRequiredBeforeDialogue: []
-    itemsGivenToPlayer: []
+    itemsGivenToPlayer:
+    - {fileID: 11400000, guid: d9ce530c876961842a8d8aef09ed9fa8, type: 2}
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 1
+    destroyItself: 0

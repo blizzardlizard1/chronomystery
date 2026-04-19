@@ -14,23 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - htmlFile: {fileID: 4900000, guid: db1cdedb9c0339c40a68d401a5a2db1c, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: Painting
     itemsRequiredBeforeDialogue: []
-    itemsGivenToPlayer: []
+    itemsGivenToPlayer:
+    - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
+    - {fileID: 11400000, guid: a814914b0376a204ca5944afdbad7f6e, type: 2}
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 1
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: d0ef31def533e1e43a3dba1db32b395c, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: SmallM
     itemsRequiredBeforeDialogue: []
-    itemsGivenToPlayer: []
+    itemsGivenToPlayer:
+    - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
+    - {fileID: 11400000, guid: a814914b0376a204ca5944afdbad7f6e, type: 2}
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 1
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 3a5187caabd25754a9ec3a83826f6113, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: 
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 0
+    destroyItself: 0

@@ -14,32 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - htmlFile: {fileID: 4900000, guid: a837f62661ed1504eaa3459ae31baeff, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: Communist
     itemsRequiredBeforeDialogue: []
-    itemsGivenToPlayer: []
+    itemsGivenToPlayer:
+    - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 1
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: a2248a874c344b94980064f0bb5923e0, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: 
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 0
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: a7f070ea5cb67de4e8b154426282c850, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: Crown
     itemsRequiredBeforeDialogue:
     - {fileID: 11400000, guid: ffb6e9f8dfa729a4c89f12152a0d8e31, type: 2}
-    itemsGivenToPlayer: []
+    itemsGivenToPlayer:
+    - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
     itemsTakenFromPlayer:
     - {fileID: 11400000, guid: ffb6e9f8dfa729a4c89f12152a0d8e31, type: 2}
-    destroyItself: 0
     isFinalEntry: 1
+    destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 7a20bfbae5118374bb823a97e7896053, type: 3}
+    audioMap: {fileID: 0}
     requiredTag: Crown
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
-    destroyItself: 0
     isFinalEntry: 0
+    destroyItself: 0

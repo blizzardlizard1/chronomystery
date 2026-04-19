@@ -1339,6 +1339,10 @@ PrefabInstance:
       value: Lobby-Dining-Past
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: unlockItem
+      value: 
+      objectReference: {fileID: 11400000, guid: d9ce530c876961842a8d8aef09ed9fa8, type: 2}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: destinationScene
       value: Lobby-Past
       objectReference: {fileID: 0}

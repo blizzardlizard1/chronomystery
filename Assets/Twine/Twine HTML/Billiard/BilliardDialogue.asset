@@ -20,7 +20,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
     itemsGivenToPlayer:
     - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
-    - {fileID: 11400000, guid: 039f309592028b94b8e36d20e5173d74, type: 2}
+    - {fileID: 11400000, guid: bbc92441f094e5d4ca0bee83b085aa49, type: 2}
     itemsTakenFromPlayer:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
     isFinalEntry: 1

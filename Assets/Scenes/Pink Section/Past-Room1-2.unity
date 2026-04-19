@@ -879,6 +879,10 @@ PrefabInstance:
       value: Yard1-2-Past
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
+      propertyPath: unlockItem
+      value: 
+      objectReference: {fileID: 11400000, guid: a814914b0376a204ca5944afdbad7f6e, type: 2}
+    - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: destinationScene
       value: Yard-Past
       objectReference: {fileID: 0}
@@ -905,7 +909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5162494076699049549, guid: 7470bc2a0746fb34cac6f88025d4de2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.745937
+      value: 36.47
       objectReference: {fileID: 0}
     - target: {fileID: 5162494076699049549, guid: 7470bc2a0746fb34cac6f88025d4de2d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1601,7 +1605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: open
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6932847774201882309, guid: efe9772b6838ce3419d3a93a935cf5b7, type: 3}
       propertyPath: roomID
@@ -1997,7 +2001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3380319200690909372, guid: d49f286690dc09043ba234557a08ba44, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.75
+      value: 36.474064
       objectReference: {fileID: 0}
     - target: {fileID: 3380319200690909372, guid: d49f286690dc09043ba234557a08ba44, type: 3}
       propertyPath: m_LocalPosition.y

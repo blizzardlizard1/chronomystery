@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c329cb880d1309b41be16d968cd07d1f, type: 3}
-  m_Name: Mirror Shard
+  m_Name: key-lobby
   m_EditorClassIdentifier: 
-  itemName: Mirror Shard
+  itemName: Lobby Key
   icon: {fileID: 0}
-  worldPrefab: {fileID: 3972525584437200239, guid: 41e26ab0e0dd6694fb2c6b26161f327e, type: 3}
+  worldPrefab: {fileID: 5800520388488569545, guid: e918ac69353fce744bdafe7adaea564a, type: 3}
   placementOffset: {x: 0, y: 0, z: 0}
-  dialogue: 
+  dialogue: Don't want to forget that!
