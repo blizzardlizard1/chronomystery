@@ -11,6 +11,7 @@ public class TwineDialogueController : MonoBehaviour
 
     public TwineInteractable activeInteractable;
     public GameObject gameManager;
+    public GameObject inventory;
     
     private AudioSource audioSource;
 
@@ -29,6 +30,10 @@ public class TwineDialogueController : MonoBehaviour
     {
         if (!gameManager) {
             gameManager = SceneStateManager.Instance.gameObject;
+        }
+
+        if (!inventory) {
+            inventory = GameObject.FindGameObjectWithTag("Inventory");
         }
     }
 
@@ -50,7 +55,7 @@ public class TwineDialogueController : MonoBehaviour
             Debug.LogError("No start passage.");
             return;
         }
-
+        inventory.SetActive(false);
         ShowPassage(parser.startPassageName);
     }
 
@@ -90,7 +95,8 @@ public class TwineDialogueController : MonoBehaviour
     }
 
     public void OnDialogueEnded()
-    {
+    {   
+        inventory.SetActive(true);
         var entry = activeEntry;
         if (entry == null)
             return;

@@ -23,6 +23,7 @@ TagManager:
   - TwoMirrorShard
   - ThreeMirrorShard
   - ZeroMirrorShard
+  - Inventory
   layers:
   - Default
   - TransparentFX

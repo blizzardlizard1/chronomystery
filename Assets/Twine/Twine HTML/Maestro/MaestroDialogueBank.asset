@@ -25,7 +25,7 @@ MonoBehaviour:
     destroyItself: 0
     changeTag: 
   - htmlFile: {fileID: 4900000, guid: d0ef31def533e1e43a3dba1db32b395c, type: 3}
-    audioMap: {fileID: 0}
+    audioMap: {fileID: 11400000, guid: decec2360766ac94aa57195e2de12ec6, type: 2}
     requiredTag: SmallM
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer:
