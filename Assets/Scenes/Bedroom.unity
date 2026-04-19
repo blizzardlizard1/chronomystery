@@ -959,7 +959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851f512b15908cc4d9fbc43393eb5a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: Flag
+  objectID: Flags
   linkedObjectIDs: []
   startsHidden: 1
 --- !u!65 &602328760
@@ -2120,7 +2120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851f512b15908cc4d9fbc43393eb5a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: Flag
+  objectID: Flags
   linkedObjectIDs: []
   startsHidden: 1
 --- !u!1001 &1553784298
