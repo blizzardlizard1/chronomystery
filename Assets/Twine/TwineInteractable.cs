@@ -4,6 +4,7 @@ public class TwineInteractable : MonoBehaviour
 {
     public TwineDialogueBank dialogueBank;
 
+
     public void StartDialogue()
     {
         if (dialogueBank == null)
@@ -92,25 +93,8 @@ public class TwineInteractable : MonoBehaviour
 
     private void Load(TwineDialogueBank.Entry entry)
     {
-        if (entry == null)
-        {
-            Debug.LogError($"[{name}] TwineInteractable.Load: entry is null.");
-            return;
-        }
-
-        if (entry.htmlFile == null)
-        {
-            Debug.LogError($"[{name}] TwineInteractable.Load: htmlFile is missing on an entry.");
-            return;
-        }
-
-        if (TwineDialogueController.Instance == null)
-        {
-            Debug.LogError($"[{name}] TwineInteractable.Load: TwineDialogueController.Instance is null.");
-            return;
-        }
-
         TwineDialogueController.Instance.activeEntry = entry;
+        TwineDialogueController.Instance.activeInteractable = this;
         TwineDialogueController.Instance.LoadTwine(entry.htmlFile.text);
         TwineDialogueController.Instance.StartDialogue();
     }

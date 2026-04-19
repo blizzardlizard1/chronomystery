@@ -23,12 +23,14 @@ MonoBehaviour:
     itemsTakenFromPlayer:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
     destroyItself: 0
+    isFinalEntry: 1
   - htmlFile: {fileID: 4900000, guid: 4a82e92835d8f534b954b061c7287c63, type: 3}
     requiredTag: Skeleton
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
     destroyItself: 0
+    isFinalEntry: 0
   - htmlFile: {fileID: 4900000, guid: 8a4ecb36a1fbfea49848d95227f84bde, type: 3}
     requiredTag: Balls
     itemsRequiredBeforeDialogue: []
@@ -36,6 +38,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
     itemsTakenFromPlayer: []
     destroyItself: 0
+    isFinalEntry: 0
   - htmlFile: {fileID: 4900000, guid: 5a6aa0bb200ce3046a7b34a077940400, type: 3}
     requiredTag: Dirty
     itemsRequiredBeforeDialogue: []
@@ -43,9 +46,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
     itemsTakenFromPlayer: []
     destroyItself: 0
+    isFinalEntry: 0
   - htmlFile: {fileID: 4900000, guid: 99c46b8a4759cfa4daec6307dbfeb2c7, type: 3}
     requiredTag: 
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
     destroyItself: 0
+    isFinalEntry: 0

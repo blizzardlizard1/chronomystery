@@ -19,15 +19,18 @@ MonoBehaviour:
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
     destroyItself: 0
+    isFinalEntry: 0
   - htmlFile: {fileID: 4900000, guid: b6f2c8c4e8c01f34c82708dab5a9c0c9, type: 3}
     requiredTag: Clock100
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
     destroyItself: 0
+    isFinalEntry: 1
   - htmlFile: {fileID: 4900000, guid: ac19a3c9f044ead4794ebb0dd7ff6214, type: 3}
     requiredTag: Rest
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer: []
     itemsTakenFromPlayer: []
     destroyItself: 0
+    isFinalEntry: 1

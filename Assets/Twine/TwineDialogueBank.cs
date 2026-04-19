@@ -22,6 +22,9 @@ public class TwineDialogueBank : ScriptableObject
 
         [Header("Destroys Itself")]
         public bool destroyItself = false;
+
+        [Header("Final State")]
+        public bool isFinalEntry;
     }
 
     public Entry[] dialogues;

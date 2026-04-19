@@ -9,9 +9,17 @@ public class TwineDialogueController : MonoBehaviour
 
     public TwineDialogueBank.Entry activeEntry;
 
+    public TwineInteractable activeInteractable;
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 
     public void LoadTwine(string html)
@@ -40,17 +48,25 @@ public class TwineDialogueController : MonoBehaviour
 
         currentPassage = p;
 
+        if (DialogueUI.Instance == null)
+        {
+            Debug.LogError("DialogueUI.Instance is null.");
+            return;
+        }
+
         DialogueUI.Instance.ShowPassage(p);
 
-        if (p.voiceClip != null)
+        if (p.voiceClip != null && Camera.main != null)
             AudioSource.PlayClipAtPoint(p.voiceClip, Camera.main.transform.position);
     }
 
     public void Choose(TwineChoice c)
     {
-        if (c.targetPassageName == "*End dialogue*")
+        if (IsEndDialogueChoice(c.targetPassageName))
         {
-            DialogueUI.Instance.Hide();
+            if (DialogueUI.Instance != null)
+                DialogueUI.Instance.Hide();
+
             OnDialogueEnded();
             return;
         }
@@ -61,18 +77,25 @@ public class TwineDialogueController : MonoBehaviour
     public void OnDialogueEnded()
     {
         var entry = activeEntry;
-        if (entry == null) return;
+        if (entry == null)
+            return;
 
         var inv = PlayerInventory.Instance;
+
+        if (inv == null)
+        {
+            Debug.LogError("PlayerInventory.Instance is null in OnDialogueEnded.");
+            return;
+        }
 
         // Remove items
         if (entry.itemsTakenFromPlayer != null)
         {
             foreach (var item in entry.itemsTakenFromPlayer)
             {
-                if (PlayerInventory.Instance.ContainsItemName(item.itemName))
+                if (item != null && inv.ContainsItemName(item.itemName))
                 {
-                    PlayerInventory.Instance.RemoveItem(item);
+                    inv.RemoveItem(item);
                     Debug.Log("[Dialogue] Removed item: " + item.itemName);
                 }
             }
@@ -83,18 +106,49 @@ public class TwineDialogueController : MonoBehaviour
         {
             foreach (var item in entry.itemsGivenToPlayer)
             {
-                if (inv.AddItem(item))
-                    Debug.Log("Given: " + item.itemName);
-            }
-        }
-        if (entry.destroyItself)
-        {
-            var obj = gameObject.GetComponent<ObjectSync>();
-            if (obj)
-            {
-                obj.DestroyPersistent();
+                if (item != null && inv.AddItem(item))
+                    Debug.Log("[Dialogue] Given item: " + item.itemName);
             }
         }
 
+        // Optional persistent destruction of the NPC/object
+        if (entry.destroyItself)
+        {
+            var sync = GetComponent<ObjectSync>();
+            if (sync != null)
+            {
+                sync.DestroyPersistent();
+            }
+        }
+
+        // Final entry: destroy this scene-local controller so no more dialogue can happen
+        if (entry.isFinalEntry)
+        {
+            if (DialogueUI.Instance != null)
+                DialogueUI.Instance.Hide();
+
+            Debug.Log("[Dialogue] Final entry completed. Destroying dialogue controller.");
+            Destroy(gameObject);
+            return;
+        }
+
+        activeEntry = null;
+        currentPassage = null;
+    }
+
+    private bool IsEndDialogueChoice(string target)
+    {
+        if (string.IsNullOrWhiteSpace(target))
+            return false;
+
+        string normalized = target.Trim().ToLowerInvariant();
+
+        normalized = normalized.Replace("*", "")
+                               .Replace(".", "")
+                               .Replace("!", "")
+                               .Replace("?", "")
+                               .Trim();
+
+        return normalized == "end dialogue";
     }
 }

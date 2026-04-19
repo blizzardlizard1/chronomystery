@@ -20,3 +20,4 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1f006e06243d5eb4fbc8cbbb438603ff, type: 2}
     itemsTakenFromPlayer: []
     destroyItself: 0
+    isFinalEntry: 1
