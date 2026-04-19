@@ -36,5 +36,6 @@ MonoBehaviour:
     itemsRequiredBeforeDialogue:
     - {fileID: 11400000, guid: ffb6e9f8dfa729a4c89f12152a0d8e31, type: 2}
     itemsGivenToPlayer: []
-    itemsTakenFromPlayer: []
+    itemsTakenFromPlayer:
+    - {fileID: 11400000, guid: ffb6e9f8dfa729a4c89f12152a0d8e31, type: 2}
     destroyItself: 0
