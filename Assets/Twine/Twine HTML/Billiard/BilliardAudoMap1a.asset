@@ -12,4 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfe8f8478260be438148daf61dbb233, type: 3}
   m_Name: BilliardAudoMap1a
   m_EditorClassIdentifier: 
-  entries: []
+  entries:
+  - passagePID: 2
+    clip: {fileID: 8300000, guid: f11223737bc319842849772598e88104, type: 3}
+  - passagePID: 3
+    clip: {fileID: 8300000, guid: e3e5d2761a30daa4c94e125233495f82, type: 3}
+  - passagePID: 4
+    clip: {fileID: 8300000, guid: 3e4cd45c05125204294bee716fdcd746, type: 3}
+  - passagePID: 5
+    clip: {fileID: 8300000, guid: e2800206587cbeb4cb41e7f01f39645e, type: 3}
+  - passagePID: 6
+    clip: {fileID: 8300000, guid: e87bf6e971c0eca4f9416922b1724d6a, type: 3}
+  - passagePID: 7
+    clip: {fileID: 8300000, guid: 60521886123d1d3409b69726f2f4f295, type: 3}
+  - passagePID: 8
+    clip: {fileID: 8300000, guid: fdfc6e5fc3127164db7bf9418a4141f2, type: 3}
+  - passagePID: 9
+    clip: {fileID: 8300000, guid: 008fe92fb92b5154eb502521df3e4c10, type: 3}
+  - passagePID: 10
+    clip: {fileID: 8300000, guid: def1fda7c417009458d3ea43360d0971, type: 3}
+  - passagePID: 11
+    clip: {fileID: 8300000, guid: 36bd4d07c3891bf45a9fb3372a94d5b2, type: 3}
+  - passagePID: 13
+    clip: {fileID: 8300000, guid: 18390d6ae2301d344ab3982c69316322, type: 3}
+  - passagePID: 14
+    clip: {fileID: 8300000, guid: ada6d435fbfb92b4f94a87a4d861a7a5, type: 3}
+  - passagePID: 15
+    clip: {fileID: 8300000, guid: c381763115a07d14a8eee51916139f7b, type: 3}
+  - passagePID: 16
+    clip: {fileID: 8300000, guid: 332351352ae44a04398658ce41df2a2e, type: 3}

@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfe8f8478260be438148daf61dbb233, type: 3}
   m_Name: BilliardAudioMapFinal
   m_EditorClassIdentifier: 
-  entries: []
+  entries:
+  - passagePID: 2
+    clip: {fileID: 8300000, guid: 4fc1492f06db0884db3b480726cc05f2, type: 3}
+  - passagePID: 3
+    clip: {fileID: 8300000, guid: 33746326f56dc424ca3dfcc19aa0cbe0, type: 3}
+  - passagePID: 4
+    clip: {fileID: 8300000, guid: dbe11951a7b2445469f8f90db8e5dc95, type: 3}
+  - passagePID: 5
+    clip: {fileID: 8300000, guid: d9912c0b6d5768e47bd6722aa739800e, type: 3}
+  - passagePID: 6
+    clip: {fileID: 8300000, guid: 6e79025e662221a4c9add4ee382be89c, type: 3}
+  - passagePID: 7
+    clip: {fileID: 8300000, guid: 916a7fd762ac01a43ade6d1a78133ff7, type: 3}

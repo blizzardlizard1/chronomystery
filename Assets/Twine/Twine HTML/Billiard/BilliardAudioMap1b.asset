@@ -12,4 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfe8f8478260be438148daf61dbb233, type: 3}
   m_Name: BilliardAudioMap1b
   m_EditorClassIdentifier: 
-  entries: []
+  entries:
+  - passagePID: 1
+    clip: {fileID: 0}
+  - passagePID: 2
+    clip: {fileID: 8300000, guid: 9ebf173cd08de6640a893763ebb76654, type: 3}
+  - passagePID: 3
+    clip: {fileID: 8300000, guid: 7b804fa66897f4f45b4a2342c05a5c6c, type: 3}
+  - passagePID: 4
+    clip: {fileID: 8300000, guid: dbf51fa5a4a6d764da386a4b0037773c, type: 3}
+  - passagePID: 5
+    clip: {fileID: 8300000, guid: 99df8c46a2dd3ac4fbc283bf7547d57f, type: 3}
+  - passagePID: 6
+    clip: {fileID: 8300000, guid: f9eb2df54029f5641b5e5d85d0db35ee, type: 3}
+  - passagePID: 7
+    clip: {fileID: 8300000, guid: 08f947a4160a765469d1ba556f50356b, type: 3}
+  - passagePID: 8
+    clip: {fileID: 8300000, guid: 269b18b11f1b5ca42adda8251bf9a1af, type: 3}
+  - passagePID: 9
+    clip: {fileID: 8300000, guid: cdf35442b40b4a342bbaf4a06d4f58dd, type: 3}
+  - passagePID: 10
+    clip: {fileID: 8300000, guid: a719bef02fd641c4480ca771d1a4c486, type: 3}
+  - passagePID: 11
+    clip: {fileID: 0}
+  - passagePID: 12
+    clip: {fileID: 8300000, guid: bf573be006d0aa44b86946ce37bb408d, type: 3}
+  - passagePID: 13
+    clip: {fileID: 8300000, guid: 1d708dc5b71cd3041ad3da9489c406a5, type: 3}
+  - passagePID: 14
+    clip: {fileID: 8300000, guid: 8697410afc0b786468454e619d2e85d8, type: 3}
+  - passagePID: 15
+    clip: {fileID: 0}
+  - passagePID: 16
+    clip: {fileID: 8300000, guid: 825e14cba43122442b1b08473acd483c, type: 3}
+  - passagePID: 17
+    clip: {fileID: 0}
+  - passagePID: 18
+    clip: {fileID: 8300000, guid: 2a01bd325194f6b469919769ce12f00d, type: 3}
+  - passagePID: 19
+    clip: {fileID: 8300000, guid: e200ffd8e995cac4785b2bfc2b9be74e, type: 3}
+  - passagePID: 20
+    clip: {fileID: 8300000, guid: 7349517083c7f99409354a8b6663e33d, type: 3}

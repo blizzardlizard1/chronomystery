@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - htmlFile: {fileID: 4900000, guid: 89e40e74e06a82a4196e30259e80e100, type: 3}
-    audioMap: {fileID: 0}
+    audioMap: {fileID: 11400000, guid: 0d9744d645899a04dbbd8b039fb92471, type: 2}
     requiredTag: 
     itemsRequiredBeforeDialogue:
     - {fileID: 11400000, guid: ee509ef268a8dd140b5b3a934529be1a, type: 2}
@@ -34,7 +34,7 @@ MonoBehaviour:
     isFinalEntry: 0
     destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 8a4ecb36a1fbfea49848d95227f84bde, type: 3}
-    audioMap: {fileID: 0}
+    audioMap: {fileID: 11400000, guid: 8dfc10e56c26dde4e919f0437874f056, type: 2}
     requiredTag: Balls
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer:
@@ -43,7 +43,7 @@ MonoBehaviour:
     isFinalEntry: 0
     destroyItself: 0
   - htmlFile: {fileID: 4900000, guid: 5a6aa0bb200ce3046a7b34a077940400, type: 3}
-    audioMap: {fileID: 0}
+    audioMap: {fileID: 11400000, guid: ad02967c5ada96542958a5edf6219d31, type: 2}
     requiredTag: Dirty
     itemsRequiredBeforeDialogue: []
     itemsGivenToPlayer:
