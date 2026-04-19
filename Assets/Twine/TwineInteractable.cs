@@ -4,7 +4,6 @@ public class TwineInteractable : MonoBehaviour
 {
     public TwineDialogueBank dialogueBank;
 
-
     public void StartDialogue()
     {
         if (dialogueBank == null)

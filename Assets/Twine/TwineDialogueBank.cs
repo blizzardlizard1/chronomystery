@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Twine/Dialogue Bank")]
@@ -25,6 +26,7 @@ public class TwineDialogueBank : ScriptableObject
         public bool isFinalEntry;
 
         public bool destroyItself;
+        public String changeTag;
     }
 
     public Entry[] dialogues;

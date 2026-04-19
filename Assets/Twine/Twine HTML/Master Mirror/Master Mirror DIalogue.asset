@@ -21,9 +21,10 @@ MonoBehaviour:
     itemsTakenFromPlayer: []
     isFinalEntry: 0
     destroyItself: 0
+    changeTag: 
   - htmlFile: {fileID: 4900000, guid: eef9c316cc517c14b908134d25a2c4e1, type: 3}
     audioMap: {fileID: 0}
-    requiredTag: 
+    requiredTag: ZeroMirrorShard
     itemsRequiredBeforeDialogue:
     - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
     itemsGivenToPlayer: []
@@ -31,9 +32,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
     isFinalEntry: 0
     destroyItself: 0
+    changeTag: OneMirrorShard
   - htmlFile: {fileID: 4900000, guid: 993eca4daaf8b8240aa8d6bcc3abfc11, type: 3}
     audioMap: {fileID: 0}
-    requiredTag: 
+    requiredTag: OneMirrorShard
     itemsRequiredBeforeDialogue:
     - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
     itemsGivenToPlayer: []
@@ -41,9 +43,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
     isFinalEntry: 0
     destroyItself: 0
+    changeTag: TwoMirrorShard
   - htmlFile: {fileID: 4900000, guid: b5c9d56de9bc80e49ba893878fb9e0ee, type: 3}
     audioMap: {fileID: 0}
-    requiredTag: 
+    requiredTag: TwoMirrorShard
     itemsRequiredBeforeDialogue:
     - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
     itemsGivenToPlayer: []
@@ -51,13 +54,15 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
     isFinalEntry: 0
     destroyItself: 0
+    changeTag: ThreeMirrorShard
   - htmlFile: {fileID: 4900000, guid: a295d17553f8acd40a075f1229b11d74, type: 3}
     audioMap: {fileID: 0}
-    requiredTag: 
+    requiredTag: ThreeMirrorShard
     itemsRequiredBeforeDialogue:
     - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
     itemsGivenToPlayer: []
     itemsTakenFromPlayer:
     - {fileID: 11400000, guid: e8894101be77ff84b917eef25eb13b9b, type: 2}
-    isFinalEntry: 0
+    isFinalEntry: 1
     destroyItself: 0
+    changeTag: 

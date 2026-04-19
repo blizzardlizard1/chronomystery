@@ -19,6 +19,10 @@ TagManager:
   - SmallM
   - Communist
   - Crown
+  - OneMirrorShard
+  - TwoMirrorShard
+  - ThreeMirrorShard
+  - ZeroMirrorShard
   layers:
   - Default
   - TransparentFX

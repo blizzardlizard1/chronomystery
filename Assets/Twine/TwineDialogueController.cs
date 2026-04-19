@@ -10,6 +10,7 @@ public class TwineDialogueController : MonoBehaviour
     public TwineDialogueBank.Entry activeEntry;
 
     public TwineInteractable activeInteractable;
+    public GameObject gameManager;
     
     private AudioSource audioSource;
 
@@ -23,6 +24,14 @@ public class TwineDialogueController : MonoBehaviour
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
     }
+
+    private void Start()
+    {
+        if (!gameManager) {
+            gameManager = SceneStateManager.Instance.gameObject;
+        }
+    }
+
     private void OnDestroy()
     {
         if (Instance == this)
@@ -120,11 +129,15 @@ public class TwineDialogueController : MonoBehaviour
         // Optional persistent destruction of the NPC/object
         if (entry.destroyItself)
         {
-            var sync = GetComponent<ObjectSync>();
-            if (sync != null)
+            if (activeInteractable.TryGetComponent<ObjectSync>(out var sync))
             {
                 sync.DestroyPersistent();
             }
+        }
+
+        // Optional changing tag for sequential entries
+        if (!string.IsNullOrEmpty(entry.changeTag) && gameManager) {
+            gameManager.tag = entry.changeTag;
         }
 
         // Final entry: destroy this scene-local controller so no more dialogue can happen
